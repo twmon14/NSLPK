@@ -66,6 +66,7 @@ open INV .
     -- :imp [nslpk2] by {C:Cipher1 <- C@Cipher1 ;}
 
 	-- :apply (rd)
+	
 -- fkm12
 	:apply(tc)
 
