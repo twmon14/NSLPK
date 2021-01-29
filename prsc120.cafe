@@ -1,90 +1,92 @@
--- init
+--> I) Base case
+--> init
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
-  red inv120(init,c3) .
+	op c1 : -> Cipher3 .
+  red inv120(init,c1) .
 close
 
--- fkm11
---> true
+--> II) Induction cases
+--> 1. fkm11(s,r1,r2,r3)
+--> r3 \in cenc1(nw(s))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = true .
-	red inv120(s,c3) implies inv120(fkm11(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm11(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in cenc1(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm11(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm11(s,r1,r2,r3),c1) .
 close
 
--- fkm12
---> true
+--> 2. fkm12(s,r1,r2,r3)
+--> r3 \in cenc1(nw(s))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-	red inv120(s,c3) implies inv120(fkm12(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm12(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in cenc1(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm12(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm12(s,r1,r2,r3),c1) .
 close
 
--- fkm21
---> true
+--> 3. fkm21(s,r1,r2,r3)
+--> r3 \in cenc1(nw(s))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = true .
-	red inv120(s,c3) implies inv120(fkm21(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm21(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in cenc1(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm21(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm21(s,r1,r2,r3),c1) .
 close
 
--- fkm22
---> true
+--> 4. fkm22(s,r1,r2,r3,r4)
+--> (r3 \in cnonce(nw(s))),(r4 \in cnonce(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
@@ -92,13 +94,13 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-	red inv120(s,c3) implies inv120(fkm22(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(fkm22(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in cnonce(nw(s))),~(r4 \in cnonce(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
@@ -106,129 +108,130 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm22(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(fkm22(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> ~(r3 \in cnonce(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm22(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(fkm22(s,r1,r2,r3,r4),c1) .
 close
 
--- fkm31
---> true
+--> 5. fkm31(s,r1,r2,r3)
+--> (r3 \in cenc3(nw(s))),key(c1) = intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = true .
-    eq (key(c3)) = intruder .
-	red inv120(s,c3) implies inv120(fkm31(s,r1,r2,r3),c3) .
+    eq (key(c1)) = intruder .
+	red inv120(s,c1) implies inv120(fkm31(s,r1,r2,r3),c1) .
 close
 
---> true
+--> (r3 \in cenc3(nw(s))),~key(c1) = intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = true .
-    eq ((key(c3)) = intruder) = false .
-	red inv120(s,c3) implies inv120(fkm31(s,r1,r2,r3),c3) .
+    eq ((key(c1)) = intruder) = false .
+	red inv120(s,c1) implies inv120(fkm31(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in cenc3(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm31(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm31(s,r1,r2,r3),c1) .
 close
 
--- fkm32
---> true
+--> 6. fkm32(s,r1,r2,r3)
+--> (r3 \in cnonce(nw(s))),key(c1) = intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq (key(c3)) = intruder .
-	red inv120(s,c3) implies inv120(fkm32(s,r1,r2,r3),c3) .
+    eq (key(c1)) = intruder .
+	red inv120(s,c1) implies inv120(fkm32(s,r1,r2,r3),c1) .
 close
 
---> true
+--> (r3 \in cnonce(nw(s))),~key(c1) = intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq ((key(c3)) = intruder) = false .
-	red inv120(s,c3) implies inv120(fkm32(s,r1,r2,r3),c3) .
+    eq ((key(c1)) = intruder) = false .
+	red inv120(s,c1) implies inv120(fkm32(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in cnonce(nw(s)))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = false .
-	red inv120(s,c3) implies inv120(fkm32(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(fkm32(s,r1,r2,r3),c1) .
 close
 
--- sdm1
---> true
+--> 7. sdm1(s,r1,r2,r3)
+--> (r3 \in ur(s))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Random .
 	op s : -> System .
 	eq (r3 \in ur(s)) = true .
-	red inv120(s,c3) implies inv120(sdm1(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm1(s,r1,r2,r3),c1) .
 close
 
---> true
+--> ~(r3 \in ur(s))
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Random .
 	op s : -> System .
 	eq (r3 \in ur(s)) = false .
-	red inv120(s,c3) implies inv120(sdm1(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm1(s,r1,r2,r3),c1) .
 close
 
--- sdm2
+--> sdm2(s,r1,r2,r3)
+--> r3 \in nw(s),m1?(r3),receiver(r3) = r1,key(cipher1(r3)) = r1,principal(cipher1(r3)) = sender(r3),r2 \in ur(s)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -239,12 +242,13 @@ open INV .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = true .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> r3 \in nw(s),m1?(r3),receiver(r3) = r1,key(cipher1(r3)) = r1,principal(cipher1(r3)) = sender(r3),~r2 \in ur(s)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -255,12 +259,13 @@ open INV .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> r3 \in nw(s),m1?(r3),receiver(r3) = r1,key(cipher1(r3)) = r1,~principal(cipher1(r3)) = sender(r3)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -270,12 +275,13 @@ open INV .
   eq receiver(r3) = r1 .
   eq key(cipher1(r3)) = r1 .
   eq (principal(cipher1(r3)) = sender(r3)) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> r3 \in nw(s),m1?(r3),receiver(r3) = r1,~key(cipher1(r3)) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -284,12 +290,13 @@ open INV .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
   eq (key(cipher1(r3)) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> r3 \in nw(s),m1?(r3),~receiver(r3) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -297,37 +304,43 @@ open INV .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq (receiver(r3) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> r3 \in nw(s),~m1?(r3)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
+--> ~r3 \in nw(s)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
   eq r3 \in nw(s) = false .
-	red inv120(s,c3) implies inv120(sdm2(s,r1,r2,r3),c3) .
+	red inv120(s,c1) implies inv120(sdm2(s,r1,r2,r3),c1) .
 close
 
--- sdm3
---> true
+--> sdm3(s,r1,r2,r3,r4)
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,principal(cipher2(r4)) = sender(r4),
+--> creator(nonce1(cipher2(r4))) = r1,forwhom(nonce1(cipher2(r4))) = sender(r4),random(nonce1(cipher2(r4))) = r2,key(c1)=intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -351,14 +364,19 @@ open INV .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
 	eq random(nonce1(cipher2(r4))) = r2 .
-    eq (key(c3)) = intruder .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+
+    eq (key(c1)) = intruder .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,principal(cipher2(r4)) = sender(r4),
+--> creator(nonce1(cipher2(r4))) = r1,forwhom(nonce1(cipher2(r4))) = sender(r4),random(nonce1(cipher2(r4))) = r2,~key(c1)=intr
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -382,14 +400,19 @@ open INV .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
 	eq random(nonce1(cipher2(r4))) = r2 .
-    eq ((key(c3)) = intruder) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+
+    eq ((key(c1)) = intruder) = false .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,principal(cipher2(r4)) = sender(r4),
+--> creator(nonce1(cipher2(r4))) = r1,forwhom(nonce1(cipher2(r4))) = sender(r4),~random(nonce1(cipher2(r4))) = r2
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -413,13 +436,17 @@ open INV .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
 	eq (random(nonce1(cipher2(r4))) = r2) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,principal(cipher2(r4)) = sender(r4),
+--> creator(nonce1(cipher2(r4))) = r1,~forwhom(nonce1(cipher2(r4))) = sender(r4)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -442,13 +469,17 @@ open INV .
     eq principal(cipher2(r4)) = sender(r4) .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq (forwhom(nonce1(cipher2(r4))) = sender(r4)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,principal(cipher2(r4)) = sender(r4),
+--> ~creator(nonce1(cipher2(r4))) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -470,13 +501,16 @@ open INV .
 	eq key(cipher2(r4)) = r1 .
     eq principal(cipher2(r4)) = sender(r4) .
     eq (creator(nonce1(cipher2(r4))) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,key(cipher2(r4)) = r1,~principal(cipher2(r4)) = sender(r4),
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -497,13 +531,16 @@ open INV .
     eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
     eq (principal(cipher2(r4)) = sender(r4)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,receiver(r4) = r1,~key(cipher2(r4)) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -523,13 +560,16 @@ open INV .
     eq random(nonce(cipher1(r3))) = r2 .
     eq receiver(r4) = r1 .
 	eq (key(cipher2(r4)) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> random(nonce(cipher1(r3))) = r2,~receiver(r4) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -548,13 +588,16 @@ open INV .
     eq forwhom(nonce(cipher1(r3))) = sender(r4) .
     eq random(nonce(cipher1(r3))) = r2 .
     eq (receiver(r4) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,forwhom(nonce(cipher1(r3))) = sender(r4),
+--> ~random(nonce(cipher1(r3))) = r2
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -572,13 +615,15 @@ open INV .
 	eq creator(nonce(cipher1(r3))) = r1 .
     eq forwhom(nonce(cipher1(r3))) = sender(r4) .
     eq (random(nonce(cipher1(r3))) = r2) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,creator(nonce(cipher1(r3))) = r1,~forwhom(nonce(cipher1(r3))) = sender(r4),
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -595,13 +640,15 @@ open INV .
     eq principal(cipher1(r3)) = r1 .
 	eq creator(nonce(cipher1(r3))) = r1 .
     eq (forwhom(nonce(cipher1(r3))) = sender(r4)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> principal(cipher1(r3)) = r1,~creator(nonce(cipher1(r3))) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -617,13 +664,15 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
     eq principal(cipher1(r3)) = r1 .
 	eq (creator(nonce(cipher1(r3))) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),key(cipher1(r3)) = sender(r4),
+--> ~principal(cipher1(r3)) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -638,13 +687,14 @@ open INV .
     eq receiver(r3) = sender(r4) .
     eq key(cipher1(r3)) = sender(r4) .
     eq (principal(cipher1(r3)) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,receiver(r3) = sender(r4),~key(cipher1(r3)) = sender(r4),
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -658,13 +708,14 @@ open INV .
     eq sender(r3) = r1 .
     eq receiver(r3) = sender(r4) .
     eq (key(cipher1(r3)) = sender(r4)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,sender(r3) = r1,~receiver(r3) = sender(r4)
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -677,13 +728,14 @@ open INV .
 	eq creator(r3) = r1 .
     eq sender(r3) = r1 .
     eq (receiver(r3) = sender(r4)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> creator(r3) = r1,~sender(r3) = r1
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -695,13 +747,14 @@ open INV .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
     eq (sender(r3) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = true,
+--> ~creator(r3) = r1,
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -712,13 +765,13 @@ open INV .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq (creator(r3) = r1) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = true,m2?(r4) = false,
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -728,13 +781,13 @@ open INV .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = true,m1?(r3) = false
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -743,13 +796,13 @@ open INV .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = true,(r4 \in nw(s)) = false
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -757,20 +810,20 @@ open INV .
 	op s : -> System .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
---> true
+--> (r3 \in nw(s)) = false
 open INV .
   :id(nslpk1)
-	op c3 : -> Cipher3 .
+	op c1 : -> Cipher3 .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
 	eq (r3 \in nw(s)) = false .
-	red inv120(s,c3) implies inv120(sdm3(s,r1,r2,r3,r4),c3) .
+	red inv120(s,c1) implies inv120(sdm3(s,r1,r2,r3,r4),c1) .
 close
 
 open INV .
