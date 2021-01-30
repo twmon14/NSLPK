@@ -211,6 +211,12 @@ mod! SET (D :: TRIV) {
 mod! COLLECTION(D :: TRIV) {
   [Elt.D < Collection]
   op _\in_ : Elt.D Collection -> Bool
+
+-- lemma, add by @duongtd 21/01/28
+  op lm1 : Elt.D Elt.D Collection -> Bool
+  vars E1 E2 : Elt.D
+  var C : Collection
+  eq lm1(E1, E2, C) = (E1 = E2 and E1 \in C implies E2 \in C) .
 }
 
 view TRIV2MSG from TRIV to MESSAGE {
@@ -277,6 +283,11 @@ mod! NETWORK {
          not(m2?(M) and key(cipher2(M)) = intruder and nonce1(cipher2(M)) = N) and
          not(m2?(M) and key(cipher2(M)) = intruder and nonce2(cipher2(M)) = N) and
          not(m3?(M) and key(cipher3(M)) = intruder and nonce(cipher3(M)) = N) .
+
+-- lemma, add by @duongtd 21/01/29
+  op lm2 : Nonce Message Network -> Bool .
+  eq lm2(N,M,NW) = (N \in cnonce(M) and M \in NW) implies N \in cnonce(NW) .
+  
   --
   -- cenc1 : the collection of cipher1's gleaned by the intruder.
   -- If the cipher is encrypted by the intruder's public key, it is not necessary
@@ -287,6 +298,11 @@ mod! NETWORK {
       if m1?(M) and not(key(cipher1(M)) = intruder) and E1 = cipher1(M) .
   ceq E1 \in cenc1(M,NW) = E1 \in cenc1(NW)
       if not(m1?(M) and not(key(cipher1(M)) = intruder) and E1 = cipher1(M)) .
+
+-- lemma, add by @duongtd 21/01/29
+  op lm3 : Cipher1 Message Network -> Bool .
+  eq lm3(E1,M,NW) = (E1 \in cenc1(M) and M \in NW) implies E1 \in cenc1(NW) .
+  
   --
   -- cenc2 : the collection of cipher2's gleaned by the intruder.
   -- If the cipher is encrypted by the intruder's public key, it is not necessary
@@ -297,6 +313,11 @@ mod! NETWORK {
       if m2?(M) and not(key(cipher2(M)) = intruder) and E2 = cipher2(M) .
   ceq E2 \in cenc2(M,NW) = E2 \in cenc2(NW)
       if not(m2?(M) and not(key(cipher2(M)) = intruder) and E2 = cipher2(M)) .
+  
+-- lemma, add by @duongtd 21/01/29
+  op lm4 : Cipher2 Message Network -> Bool .
+  eq lm4(E2,M,NW) = (E2 \in cenc2(M) and M \in NW) implies E2 \in cenc2(NW) .
+  
   --
   -- cenc3 : the collection of cipher3's gleaned by the intruder.
   -- If the cipher is encrypted by the intruder's public key, it is not necessary
@@ -439,7 +460,7 @@ mod INV {
   op e2 : -> Cipher2 
   op e3 : -> Cipher3 
   op r : -> Random
-  -- ops n n1 n2 : -> Nonce
+  ops n n2 : -> Nonce
   ops p q p1 q1 : -> Principal
 -- declare invariants to prove
   op inv100 : System Cipher1 -> Bool
