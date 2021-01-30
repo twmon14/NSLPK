@@ -1,70 +1,141 @@
--- init
-open INV .
---   :id(nslpk1)
-	op c1 : -> Cipher1 .
-  red inv140(init,c1) .
-close
+-- --> I) Base case
+-- --> init
+-- open INV .
+-- --   :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+--   red inv140(init,c1) .
+-- close
 
--- fkm11
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Cipher1 .
-	op s : -> System .
-	eq (r3 \in cenc1(nw(s))) = true .
-	eq (key(r3) = intruder) = false .
-    eq c1 = r3 .
-    -- eq key(c1) = key(r3) .
-    -- eq nonce(c1) = nonce(r3) .
-    -- eq principal(c1) = principal(r3) .
-	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
-close
+-- --> II) Induction cases
+-- --> 1. fkm11(s,r1,r2,r3)
+-- -- true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	op m10 : -> Network .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
 
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Cipher1 .
-	op s : -> System .
-	eq (r3 \in cenc1(nw(s))) = true .
-	eq (key(r3) = intruder) = false .
-    -- eq (c1 = r3) = false .
-    eq (key(c1) = key(r3)) = false .
-    eq (nonce(c1) = nonce(r3)) = false .
-    eq (principal(c1) = principal(r3)) = false .
-	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
-close
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = true .
+-- 	eq (key(c1) = intruder) = false .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
 
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Cipher1 .
-	op s : -> System .
-	eq (r3 \in cenc1(nw(s))) = true .
-	eq key(r3) = intruder .
-	red inv100(s,r3) implies inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
-close
+-- -- true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
 
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Cipher1 .
-	op s : -> System .
-	eq (r3 \in cenc1(nw(s))) = false .
-	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
-close
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = true .
+-- 	eq (key(c1) = intruder) = true .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
 
--- fkm12
+-- -- true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = false .
+
+-- 	eq (principal(c1) = intruder) = false .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+-- -- true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = false .
+
+-- 	eq (principal(c1) = intruder) = true .
+-- 	eq nonce(c1) \in cnonce(nw(s)) = true .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+-- -- true 
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = false .
+
+-- 	eq (principal(c1) = intruder) = true .
+-- 	eq nonce(c1) \in cnonce(nw(s)) = false .
+-- 	eq c1 \in cenc1(nw(s),m1(intruder,r1,r2,r3)) = false .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+-- -- false
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
+-- 	eq (key(r3) = intruder) = false .
+-- 	eq (c1 \in cenc1(nw(s))) = false .
+
+-- 	eq (principal(c1) = intruder) = true .
+-- 	eq nonce(c1) \in cnonce(nw(s)) = false .
+-- 	eq c1 \in cenc1(nw(s),m1(intruder,r1,r2,r3)) = true .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+-- --> true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = true .
+-- 	eq key(r3) = intruder .
+-- 	red inv100(s,r3) implies inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+-- --> true
+-- open INV .
+--   -- :id(nslpk1)
+-- 	op c1 : -> Cipher1 .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Cipher1 .
+-- 	op s : -> System .
+-- 	eq (r3 \in cenc1(nw(s))) = false .
+-- 	red inv140(s,c1) implies inv140(fkm11(s,r1,r2,r3),c1) .
+-- close
+
+--> 2. fkm12(s,r1,r2,r3)
 --> true
 open INV .
   -- :id(nslpk1)
@@ -74,10 +145,11 @@ open INV .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq c1 = enc1(r2,r3,r1) .
-    -- eq key(c1) = r2 .
-    -- eq nonce(c1) = r3 .
-    -- eq principal(c1) = r1 .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
+    eq nonce(c1) = r3 .
+    eq principal(c1) = r1 .
     eq (r1 = intruder) = false .
 	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
 close
@@ -91,70 +163,13 @@ open INV .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq c1 = enc1(r2,r3,r1) .
-    -- eq key(c1) = r2 .
-    -- eq nonce(c1) = r3 .
-    -- eq principal(c1) = r1 .
-    eq r1 = intruder .
-    eq r2 = intruder .
-	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
-close
-
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-    eq c1 = enc1(r2,r3,r1) .
-    -- eq key(c1) = r2 .
-    -- eq nonce(c1) = r3 .
-    -- eq principal(c1) = r1 .
-    eq r1 = intruder .
-    eq (r2 = intruder) = false .
-	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
-close
-
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-    -- eq (c1 = enc1(r2,r3,r1)) = false .
-    eq (key(c1) = r2) = false .
-    eq (nonce(c1) = r3) = false .
-    eq (principal(c1) = r1) = false .
-    -- eq r1 = intruder .
-    eq (r2 = intruder) = false .
-	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
-close
-
---> true
-open INV .
-  -- :id(nslpk1)
-	op c1 : -> Cipher1 .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-    -- eq (c1 = enc1(r2,r3,r1)) = false .
-    eq (key(c1) = r2) = false .
-    eq (nonce(c1) = r3) = false .
-    eq (principal(c1) = r1) = false .
-    -- eq r1 = intruder .
-    eq r2 = intruder .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
     eq nonce(c1) = r3 .
-    -- eq creator(nonce(c1)) = creator(r3) .
-    -- eq forwhom(nonce(c1)) = forwhom(r3) .
-    -- eq random(nonce(c1)) = random(r3) . 
+    eq principal(c1) = r1 .
+    eq r1 = intruder .
+    eq r2 = intruder .
 	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
 close
 
@@ -167,16 +182,69 @@ open INV .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    -- eq (c1 = enc1(r2,r3,r1)) = false .
-    eq (key(c1) = r2) = false .
-    eq (nonce(c1) = r3) = false .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
+    eq nonce(c1) = r3 .
+    eq principal(c1) = r1 .
+
+    eq r1 = intruder .
+    eq (r2 = intruder) = false .
+	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
+close
+
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
+    eq nonce(c1) = r3 .
     eq (principal(c1) = r1) = false .
-    eq r2 = intruder .
+
+    eq (r2 = intruder) = false .
+	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
+close
+
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
+    eq nonce(c1) = r3 .
+    eq (principal(c1) = r1) = false .
+
+    eq (r2 = intruder) = true .
+	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
+close
+
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    -- eq c1 = enc1(r2,r3,r1) .
+	-- rewrite
+    eq key(c1) = r2 .
     -- eq (nonce(c1) = r3) = false .
-    eq (creator(nonce(c1)) = creator(r3)) = false .
+	eq (creator(nonce(c1)) = creator(r3)) = false .
     eq (forwhom(nonce(c1)) = forwhom(r3)) = false .
     eq (random(nonce(c1)) = random(r3)) = false .
- 	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
+	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
 close
 
 --> true
@@ -190,7 +258,24 @@ open INV .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
 close
-
+--> test****	
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    eq (c1 = enc1(r2,r3,r1)) = false .
+	-- rewrite
+    -- eq key(c1) = r2 .
+    -- eq (nonce(c1) = r3) = false .
+	eq r2 = intruder .
+	eq nonce(c1) = r3 .
+	red inv140(s,c1) implies inv140(fkm12(s,r1,r2,r3),c1) .
+close
+eof
 -- fkm21
 --> true
 open INV .
@@ -262,6 +347,38 @@ open INV .
 	red inv140(s,c1) implies inv140(fkm22(s,r1,r2,r3,r4),c1) .
 close
 
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    eq nonce(c1) = r4 .
+	red inv140(s,c1) implies inv140(fkm22(s,r1,r2,r3,r4),c1) .
+close
+
+-- long term
+open INV .
+  -- :id(nslpk1)
+	op c1 : -> Cipher1 .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    eq (nonce(c1) = r3) = false .
+	eq (nonce(c1) = r4) = false .
+	red inv140(s,c1) implies inv140(fkm22(s,r1,r2,r3,r4),c1) .
+close
+eof
 --> true
 open INV .
   -- :id(nslpk1)
