@@ -1,553 +1,1084 @@
 -- init
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-  red inv160(init,n) .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+  red inv160(init,n1) .
 close
 
--- fkm11
+-- fkm11 (all cases - true)
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = true .
     eq key(r3) = intruder .
-	red inv100(s,r3) implies inv160(s,n) implies inv160(fkm11(s,r1,r2,r3),n) .
+	red inv100(s,r3) implies inv160(s,n1) implies inv160(fkm11(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = true .
     eq (key(r3) = intruder) = false .
-	red inv160(s,n) implies inv160(fkm11(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm11(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm11(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm11(s,r1,r2,r3),n1) .
 close
 
--- fkm12
+ -- fkm12 (all cases - true)
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq r2 = intruder .
-    eq n = r3 .
-	red inv160(s,n) implies inv160(fkm12(s,r1,r2,r3),n) .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq forwhom(n1) = forwhom(r3) .
+    eq random(n1) = random(r3) .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq r2 = intruder .
-    -- eq (n = r3) = false .
-    eq (creator(n) = creator(r3)) = false .
-    eq (forwhom(n) = forwhom(r3)) = false .
-    eq (random(n) = random(r3)) = false .
-
-	red inv160(s,n) implies inv160(fkm12(s,r1,r2,r3),n) .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq forwhom(n1) = forwhom(r3) .
+    eq (random(n1) = random(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq (forwhom(n1) = forwhom(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    -- eq n1 = r3 . rewrite
+    eq (creator(n1) = creator(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq (r2 = intruder) = false .
-	red inv160(s,n) implies inv160(fkm12(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm12(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm12(s,r1,r2,r3),n1) .
 close
 
--- fkm21
+-- fkm21 (all cases - true)
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq key(r3) = intruder .
-	red inv110(s,r3) implies inv160(s,n) implies inv160(fkm21(s,r1,r2,r3),n) .
+	red inv110(s,r3) implies inv160(s,n1) implies inv160(fkm21(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq (key(r3) = intruder) = false .
-	red inv160(s,n) implies inv160(fkm21(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm21(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm21(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm21(s,r1,r2,r3),n1) .
 close
 
--- fkm22
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-	eq (r4 \in cnonce(nw(s))) = true .
-    eq r2 = intruder .
-    eq n = r3 .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- -- fkm22 (not all true)
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+	
+--     eq r2 = intruder .
+--     -- eq n1 = r3 . rewrite
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq random(n1) = random(r3) .
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-	eq (r4 \in cnonce(nw(s))) = true .
-    eq r2 = intruder .
-    eq n = r4 .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-	eq (r4 \in cnonce(nw(s))) = true .
-    eq r2 = intruder .
-    -- eq (n = r3) = false .
-    eq (creator(n) = creator(r3)) = false .
-    eq (forwhom(n) = forwhom(r3)) = false .
-    eq (random(n) = random(r3)) = false .
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+--     -- eq n1 = r3 . rewrite
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq (random(n1) = random(r3)) = false.
 
-    -- eq (n = r4) = false .
-    eq (creator(n) = creator(r4)) = false .
-    eq (forwhom(n) = forwhom(r4)) = false .
-    eq (random(n) = random(r4)) = false .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- 	eq creator(n1) = creator(r4) .
+--     eq forwhom(n1) = forwhom(r4) .
+--     eq random(n1) = random(r4) .
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-	eq (r4 \in cnonce(nw(s))) = true .
-    eq (r2 = intruder) = false .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- 	eq (creator(r3) = intruder) = false .
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = true .
-	eq (r4 \in cnonce(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- 	red lm1(r4,n1,cnonce(nw(s)))
+-- 	implies inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Nonce .
-	op r4 : -> Nonce .
-	op s : -> System .
-	eq (r3 \in cnonce(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm22(s,r1,r2,r3,r4),n) .
-close
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+--     -- eq n1 = r3 . rewrite
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq (random(n1) = random(r3)) = false .
 
--- fkm31
+-- 	eq creator(n1) = creator(r4) .
+--     eq forwhom(n1) = forwhom(r4) .
+--     eq random(n1) = random(r4) .
+
+-- 	eq creator(r3) = intruder .
+
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq (random(n1) = random(r3)) = false .
+
+-- 	eq creator(n1) = creator(r4) .
+--     eq forwhom(n1) = forwhom(r4) .
+--     eq (random(n1) = random(r4)) = false .	
+
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq (random(n1) = random(r3)) = false .
+
+-- 	eq creator(n1) = creator(r4) .
+--     eq (forwhom(n1) = forwhom(r4)) = false .
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+
+-- 	eq creator(n1) = creator(r3) .
+--     eq forwhom(n1) = forwhom(r3) .
+--     eq (random(n1) = random(r3)) = false .
+
+-- 	eq (creator(n1) = creator(r4)) = false .
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+
+-- 	eq creator(n1) = creator(r3) .
+--     eq (forwhom(n1) = forwhom(r3)) = false .
+    
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq r2 = intruder .
+
+-- 	eq (creator(n1) = creator(r3)) = false .
+    
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = true .
+--     eq (r2 = intruder) = false .
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = true .
+-- 	eq (r4 \in cnonce(nw(s))) = false .
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Principal .
+-- 	op r3 : -> Nonce .
+-- 	op r4 : -> Nonce .
+-- 	op s : -> System .
+-- 	eq (r3 \in cnonce(nw(s))) = false .
+-- 	red inv160(s,n1) implies inv160(fkm22(s,r1,r2,r3,r4),n1) .
+-- close
+
+-- fkm31 (all - true)
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = true .
     eq key(r3) = intruder .
-	red inv120(s,r3) implies inv160(s,n) implies inv160(fkm31(s,r1,r2,r3),n) .
+	red inv120(s,r3) implies inv160(s,n1) implies inv160(fkm31(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = true .
     eq (key(r3) = intruder) = false .
-	red inv160(s,n) implies inv160(fkm31(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm31(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher3 .
 	op s : -> System .
 	eq (r3 \in cenc3(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm31(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm31(s,r1,r2,r3),n1) .
 close
 
--- fkm32
+-- fkm32 (all - true)
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq r2 = intruder .
-    eq n = r3 .
-	red inv160(s,n) implies inv160(fkm32(s,r1,r2,r3),n) .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq forwhom(n1) = forwhom(r3) .
+    eq random(n1) = random(r3) .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq r2 = intruder .
-    -- eq (n = r3) = false .
-    eq (creator(n) = creator(r3)) = false .
-    eq (forwhom(n) = forwhom(r3)) = false .
-    eq (random(n) = random(r3)) = false .
-	red inv160(s,n) implies inv160(fkm32(s,r1,r2,r3),n) .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq forwhom(n1) = forwhom(r3) .
+    eq (random(n1) = random(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    -- eq n1 = r3 . rewrite
+	eq creator(n1) = creator(r3) .
+    eq (forwhom(n1) = forwhom(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+    eq r2 = intruder .
+    -- eq n1 = r3 . rewrite
+	eq (creator(n1) = creator(r3)) = false .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq (r2 = intruder) = false .
-	red inv160(s,n) implies inv160(fkm32(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = false .
-	red inv160(s,n) implies inv160(fkm32(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(fkm32(s,r1,r2,r3),n1) .
 close
 
--- sdm1
+-- sdm1 ( all - true)
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = true .
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+    eq r2 = intruder .
+    -- eq n1 = n(r1,intruder,r3) . rewrite
+	eq creator(n1) = r1 .
+    eq forwhom(n1) = intruder .
+    eq random(n1) = r3 .
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+    eq r2 = intruder .
+
+    eq creator(n1) = r1 .
+    eq forwhom(n1) = intruder .
+    eq (random(n1) = r3) = false .
+
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+    eq r2 = intruder .
+	
+    eq creator(n1) = r1 .
+    eq (forwhom(n1) = intruder) = false .
+
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+    eq r2 = intruder .
+	
+    eq (creator(n1) = r1) = false .
+
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
+close
+
+open INV .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Random .
 	op s : -> System .
 	eq (r3 \in ur(s)) = false .
     eq (r2 = intruder) = false .
-	red inv160(s,n) implies inv160(sdm1(s,r1,r2,r3),n) .
+	red inv160(s,n1) implies inv160(sdm1(s,r1,r2,r3),n1) .
 close
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
-	eq (r3 \in ur(s)) = false .
-    eq r2 = intruder .
-    eq n = n(r1,intruder,r3) .
-	red inv160(s,n) implies inv160(sdm1(s,r1,r2,r3),n) .
-close
+-- -- sdm2 (not all true)
+-- --> true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = true .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
-	eq (r3 \in ur(s)) = false .
-    eq r2 = intruder .
-    -- eq (n = n(r1,intruder,r3)) = false .
-    eq (creator(n) = r1) = false .
-    eq (forwhom(n) = intruder) = false .
-    eq (random(n) = r3) = false .
+-- --> true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
 
-	red inv160(s,n) implies inv160(sdm1(s,r1,r2,r3),n) .
-close
+--   eq (sender(r3) = intruder) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
 
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
-	eq (r3 \in ur(s)) = true .
-	red inv160(s,n) implies inv160(sdm1(s,r1,r2,r3),n) .
-close
+-- --> true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq random(n1) = random(nonce(cipher1(r3))) .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
 
--- sdm2
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq creator(n1) = r1 .
+--   eq forwhom(n1) = intruder .
+--   eq random(n1) = r2 .
+
+--   eq (r1 = intruder) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq creator(n1) = r1 .
+--   eq forwhom(n1) = intruder .
+--   eq random(n1) = r2 .
+
+--   eq (r1 = intruder) = true .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq creator(n1) = r1 .
+--   eq forwhom(n1) = intruder .
+--   eq (random(n1) = r2) = false .
+
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq creator(n1) = r1 .
+--   eq (forwhom(n1) = intruder) = false .
+--   eq (r1 = intruder) = false .
+--   	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq creator(n1) = r1 .
+--   eq (forwhom(n1) = intruder) = false .
+--   eq r1 = intruder .
+-- --   eq cipher1(r3) \in cenc1(nw(s)) = true .
+
+--   	-- red inv130(s,nonce(cipher1(r3)))
+-- 	-- implies inv140(s,cipher1(r3))
+-- 	-- implies inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+--   	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq forwhom(n1) = forwhom(nonce(cipher1(r3))) .
+--   eq (random(n1) = random(nonce(cipher1(r3)))) = false .
+
+--   eq (creator(n1) = r1) = false .
+-- --   eq (r1 = intruder) = false .
+-- --   eq cipher1(r3) \in cenc1(nw(s)) = true .
+-- --   	red inv130(s,nonce(cipher1(r3)))
+-- -- 	implies inv140(s,cipher1(r3))
+-- -- 	implies inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+--   	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+-- --   eq n1 = nonce(cipher1(r3)) .  
+--   ** rewrite
+--   eq creator(n1) = creator(nonce(cipher1(r3))) .
+--   eq (forwhom(n1) = forwhom(nonce(cipher1(r3)))) = false .
+-- --   eq r1 = intruder .
+-- --   eq cipher1(r3) \in cenc1(nw(s)) = true .
+-- --   	red inv130(s,nonce(cipher1(r3)))
+-- -- 	implies inv140(s,cipher1(r3))
+-- -- 	implies inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+--   	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- long term
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq principal(cipher1(r3)) = sender(r3) .
+--   eq r2 \in ur(s) = false .
+--   eq sender(r3) = intruder .
+
+--   eq (creator(n1) = creator(nonce(cipher1(r3)))) = false .
+--   	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq key(cipher1(r3)) = r1 .
+--   eq (principal(cipher1(r3)) = sender(r3)) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq receiver(r3) = r1 .
+--   eq (key(cipher1(r3)) = r1) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = true .
+--   eq (receiver(r3) = r1) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = true .
+--   eq m1?(r3) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- -- true
+-- open INV .
+--   :id(nslpk1)
+-- 	op n1 : -> Nonce .
+-- 	op r1 : -> Principal .
+-- 	op r2 : -> Random .
+-- 	op r3 : -> Message .
+-- 	op s : -> System .
+--   eq r3 \in nw(s) = false .
+-- 	red inv160(s,n1) implies inv160(sdm2(s,r1,r2,r3),n1) .
+-- close
+
+-- sdm3 (all - true)
 --> true
+
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
+	op r4 : -> Message .
 	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = true .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
+    eq (r3 \in nw(s)) = true .
+	eq (r4 \in nw(s)) = true .
+	eq m1?(r3) = true .
+	eq m2?(r4) = true .
+	eq creator(r3) = r1 .
+    eq sender(r3) = r1 .
+    eq receiver(r3) = sender(r4) .
+    eq key(cipher1(r3)) = sender(r4) .
+    eq principal(cipher1(r3)) = r1 .
+	eq creator(nonce(cipher1(r3))) = r1 .
+    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
+    eq random(nonce(cipher1(r3))) = r2 .
+    eq receiver(r4) = r1 .
+	eq key(cipher2(r4)) = r1 .
+    eq principal(cipher2(r4)) = sender(r4) .
+    eq creator(nonce1(cipher2(r4))) = r1 .
+	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
+	eq random(nonce1(cipher2(r4))) = r2 .
+
+    eq sender(r4) = intruder .
+    -- eq n1 = nonce2(cipher2(r4)) .
+    eq creator(n1) = creator(nonce2(cipher2(r4))) .
+    eq forwhom(n1) = forwhom(nonce2(cipher2(r4))) .
+    eq random(n1) = random(nonce2(cipher2(r4))) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
---> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
+	op r4 : -> Message .
 	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
+    eq (r3 \in nw(s)) = true .
+	eq (r4 \in nw(s)) = true .
+	eq m1?(r3) = true .
+	eq m2?(r4) = true .
+	eq creator(r3) = r1 .
+    eq sender(r3) = r1 .
+    eq receiver(r3) = sender(r4) .
+    eq key(cipher1(r3)) = sender(r4) .
+    eq principal(cipher1(r3)) = r1 .
+	eq creator(nonce(cipher1(r3))) = r1 .
+    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
+    eq random(nonce(cipher1(r3))) = r2 .
+    eq receiver(r4) = r1 .
+	eq key(cipher2(r4)) = r1 .
+    eq principal(cipher2(r4)) = sender(r4) .
+    eq creator(nonce1(cipher2(r4))) = r1 .
+	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
+	eq random(nonce1(cipher2(r4))) = r2 .
 
-  eq (sender(r3) = intruder) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
+    eq sender(r4) = intruder .
+    -- eq n1 = nonce2(cipher2(r4)) .
+    eq creator(n1) = creator(nonce2(cipher2(r4))) .
+    eq forwhom(n1) = forwhom(nonce2(cipher2(r4))) .
+    eq (random(n1) = random(nonce2(cipher2(r4)))) = false .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
---> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
+	op r4 : -> Message .
 	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq sender(r3) = intruder .
-  eq n = nonce(cipher1(r3)) .
---   eq creator(n) = r1 .
---   eq forwhom(n) = intruder .
---   eq random(n) = r2 .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
+    eq (r3 \in nw(s)) = true .
+	eq (r4 \in nw(s)) = true .
+	eq m1?(r3) = true .
+	eq m2?(r4) = true .
+	eq creator(r3) = r1 .
+    eq sender(r3) = r1 .
+    eq receiver(r3) = sender(r4) .
+    eq key(cipher1(r3)) = sender(r4) .
+    eq principal(cipher1(r3)) = r1 .
+	eq creator(nonce(cipher1(r3))) = r1 .
+    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
+    eq random(nonce(cipher1(r3))) = r2 .
+    eq receiver(r4) = r1 .
+	eq key(cipher2(r4)) = r1 .
+    eq principal(cipher2(r4)) = sender(r4) .
+    eq creator(nonce1(cipher2(r4))) = r1 .
+	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
+	eq random(nonce1(cipher2(r4))) = r2 .
+
+    eq sender(r4) = intruder .
+    -- eq n1 = nonce2(cipher2(r4)) .
+    eq creator(n1) = creator(nonce2(cipher2(r4))) .
+    eq (forwhom(n1) = forwhom(nonce2(cipher2(r4)))) = false .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
+	op r4 : -> Message .
 	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq sender(r3) = intruder .
---   eq creator(n) = r1 .
---   eq forwhom(n) = intruder .
---   eq random(n) = r2 .
-  eq n = n(r1,intruder,r2) .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
+    eq (r3 \in nw(s)) = true .
+	eq (r4 \in nw(s)) = true .
+	eq m1?(r3) = true .
+	eq m2?(r4) = true .
+	eq creator(r3) = r1 .
+    eq sender(r3) = r1 .
+    eq receiver(r3) = sender(r4) .
+    eq key(cipher1(r3)) = sender(r4) .
+    eq principal(cipher1(r3)) = r1 .
+	eq creator(nonce(cipher1(r3))) = r1 .
+    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
+    eq random(nonce(cipher1(r3))) = r2 .
+    eq receiver(r4) = r1 .
+	eq key(cipher2(r4)) = r1 .
+    eq principal(cipher2(r4)) = sender(r4) .
+    eq creator(nonce1(cipher2(r4))) = r1 .
+	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
+	eq random(nonce1(cipher2(r4))) = r2 .
+
+    eq sender(r4) = intruder .
+    -- eq n1 = nonce2(cipher2(r4)) .
+    eq (creator(n1) = creator(nonce2(cipher2(r4)))) = false .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq sender(r3) = intruder .
-  -- eq (n = n(r1,intruder,r2)) = false .
-  eq (creator(n) = r1) = false .
-  eq (forwhom(n) = intruder) = false .
-  eq (random(n) = r2) = false .
-  eq (creator(n) = creator(nonce(cipher1(r3)))) = false .
-  eq (forwhom(n) = forwhom(nonce(cipher1(r3)))) = false .
-  eq (random(n) = random(nonce(cipher1(r3)))) = false .
-  -- eq (n = nonce(cipher1(r3))) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq (principal(cipher1(r3)) = sender(r3)) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq (key(cipher1(r3)) = r1) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq (receiver(r3) = r1) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = false .
-	red inv160(s,n) implies inv160(sdm2(s,r1,r2,r3),n) .
-close
-
--- sdm3
---> true
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -573,83 +1104,13 @@ open INV .
 	eq random(nonce1(cipher2(r4))) = r2 .
 
     eq (sender(r4) = intruder) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
-close
-
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-    eq principal(cipher1(r3)) = r1 .
-	eq creator(nonce(cipher1(r3))) = r1 .
-    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
-    eq random(nonce(cipher1(r3))) = r2 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq principal(cipher2(r4)) = sender(r4) .
-    eq creator(nonce1(cipher2(r4))) = r1 .
-	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
-	eq random(nonce1(cipher2(r4))) = r2 .
-
-    eq sender(r4) = intruder .
-    -- eq n = nonce2(cipher2(r4)) .
-    eq creator(n) = creator(nonce2(cipher2(r4))) .
-    eq forwhom(n) = forwhom(nonce2(cipher2(r4))) .
-    eq random(n) = random(nonce2(cipher2(r4))) .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
-close
-
-open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-    eq principal(cipher1(r3)) = r1 .
-	eq creator(nonce(cipher1(r3))) = r1 .
-    eq forwhom(nonce(cipher1(r3))) = sender(r4) .
-    eq random(nonce(cipher1(r3))) = r2 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq principal(cipher2(r4)) = sender(r4) .
-    eq creator(nonce1(cipher2(r4))) = r1 .
-	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
-	eq random(nonce1(cipher2(r4))) = r2 .
-
-    eq sender(r4) = intruder .
-    eq (creator(n) = creator(nonce2(cipher2(r4)))) = false .
-    eq (forwhom(n) = forwhom(nonce2(cipher2(r4)))) = false .
-    eq (random(n) = random(nonce2(cipher2(r4)))) = false .
-    -- eq (n = nonce2(cipher2(r4))) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -673,13 +1134,13 @@ open INV .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq forwhom(nonce1(cipher2(r4))) = sender(r4) .
 	eq (random(nonce1(cipher2(r4))) = r2) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -702,13 +1163,13 @@ open INV .
     eq principal(cipher2(r4)) = sender(r4) .
     eq creator(nonce1(cipher2(r4))) = r1 .
 	eq (forwhom(nonce1(cipher2(r4))) = sender(r4)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -730,13 +1191,13 @@ open INV .
 	eq key(cipher2(r4)) = r1 .
     eq principal(cipher2(r4)) = sender(r4) .
     eq (creator(nonce1(cipher2(r4))) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -757,13 +1218,13 @@ open INV .
     eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
     eq (principal(cipher2(r4)) = sender(r4)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -783,13 +1244,13 @@ open INV .
     eq random(nonce(cipher1(r3))) = r2 .
     eq receiver(r4) = r1 .
 	eq (key(cipher2(r4)) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -808,13 +1269,13 @@ open INV .
     eq forwhom(nonce(cipher1(r3))) = sender(r4) .
     eq random(nonce(cipher1(r3))) = r2 .
     eq (receiver(r4) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -832,13 +1293,13 @@ open INV .
 	eq creator(nonce(cipher1(r3))) = r1 .
     eq forwhom(nonce(cipher1(r3))) = sender(r4) .
     eq (random(nonce(cipher1(r3))) = r2) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -855,13 +1316,13 @@ open INV .
     eq principal(cipher1(r3)) = r1 .
 	eq creator(nonce(cipher1(r3))) = r1 .
     eq (forwhom(nonce(cipher1(r3))) = sender(r4)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -877,13 +1338,13 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
     eq principal(cipher1(r3)) = r1 .
 	eq (creator(nonce(cipher1(r3))) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -898,13 +1359,13 @@ open INV .
     eq receiver(r3) = sender(r4) .
     eq key(cipher1(r3)) = sender(r4) .
     eq (principal(cipher1(r3)) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -918,13 +1379,13 @@ open INV .
     eq sender(r3) = r1 .
     eq receiver(r3) = sender(r4) .
     eq (key(cipher1(r3)) = sender(r4)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -937,13 +1398,13 @@ open INV .
 	eq creator(r3) = r1 .
     eq sender(r3) = r1 .
     eq (receiver(r3) = sender(r4)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -955,13 +1416,13 @@ open INV .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
     eq (sender(r3) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -972,13 +1433,13 @@ open INV .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq (creator(r3) = r1) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -988,13 +1449,13 @@ open INV .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -1003,13 +1464,13 @@ open INV .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -1017,22 +1478,22 @@ open INV .
 	op s : -> System .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-	op n : -> Nonce .
+  :id(nslpk1)
+	op n1 : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
 	eq (r3 \in nw(s)) = false .
-	red inv160(s,n) implies inv160(sdm3(s,r1,r2,r3,r4),n) .
+	red inv160(s,n1) implies inv160(sdm3(s,r1,r2,r3,r4),n1) .
 close
 
--- open INV .
---   :proof(nslpk1)
--- close
+open INV .
+  :proof(nslpk1)
+close
