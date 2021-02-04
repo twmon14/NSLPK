@@ -262,7 +262,7 @@ open INV .
 	:def csb48 = :ctf {eq P#Principal  = intruder .}
 	:apply(csb48)
 
-  :imp [inv13] by {N:Nonce <- N@Nonce ;}
+    :imp [inv13] by {N:Nonce <- N@Nonce ;}
 	:apply (rd)
 
   :imp [inv13] by {N:Nonce <- N@Nonce ;}
