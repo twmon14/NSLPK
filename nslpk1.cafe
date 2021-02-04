@@ -35,14 +35,13 @@ mod! NONCE {
   op forwhom : Nonce -> Principal
   op random : Nonce -> Random
   vars N1 N2 : Nonce
-  var C : Principal
-  var W : Principal
-  var R : Random
+  vars C C' : Principal
+  vars W W' : Principal
+  vars R R' : Random
   eq creator(n(C,W,R)) = C .
   eq forwhom(n(C,W,R)) = W .
   eq random(n(C,W,R)) = R .
-  eq (N1 = N2) = (creator(N1) = creator(N2) and forwhom(N1) = forwhom(N2) and
-                  random(N1) = random(N2)) .
+  eq (n(C,W,R) = n(C',W',R')) = (C = C' and W = W' and R = R') .
 }
 
 --
@@ -58,14 +57,13 @@ mod! CIPHER1 {
   op nonce : Cipher1 -> Nonce
   op principal : Cipher1 -> Principal
   vars E11 E12 : Cipher1
-  var K : Principal
-  var N : Nonce
-  var P : Principal
+  vars K K' : Principal
+  vars N N' : Nonce
+  vars P P' : Principal
   eq key(enc1(K,N,P)) = K .
   eq nonce(enc1(K,N,P)) = N .
   eq principal(enc1(K,N,P)) = P .
-  eq (E11 = E12) = (key(E11) = key(E12) and nonce(E11) = nonce(E12) and
-                    principal(E11) = principal(E12)) .
+  eq (enc1(K,N,P) = enc1(K',N',P')) = (K = K' and N = N' and P = P') .
 }
 
 --
@@ -82,16 +80,16 @@ mod! CIPHER2 {
   op nonce2 : Cipher2 -> Nonce
   op principal : Cipher2 -> Principal
   vars E21 E22 : Cipher2
-  var K : Principal
-  var N1 : Nonce
-  var N2 : Nonce
-  var P : Principal
+  vars K K' : Principal
+  vars N1 N1' : Nonce
+  vars N2 N2' : Nonce
+  vars P P' : Principal
   eq key(enc2(K,N1,N2,P)) = K .
   eq nonce1(enc2(K,N1,N2,P)) = N1 .
   eq nonce2(enc2(K,N1,N2,P)) = N2 .
   eq principal(enc2(K,N1,N2,P)) = P .
-  eq (E21 = E22) = (key(E21) = key(E22) and nonce1(E21) = nonce1(E22) and
-                    nonce2(E21) = nonce2(E22) and principal(E21) = principal(E22)) .
+  eq (enc2(K,N1,N2,P) = enc2(K',N1',N2',P')) 
+    = (K = K' and N1 = N1' and N2 = N2' and P = P') .
 }
 
 --
@@ -106,11 +104,11 @@ mod! CIPHER3 {
   op key : Cipher3 -> Principal
   op nonce : Cipher3 -> Nonce
   vars E31 E32 : Cipher3
-  var K : Principal
-  var N : Nonce
+  vars K K' : Principal
+  vars N N' : Nonce
   eq key(enc3(K,N)) = K .
   eq nonce(enc3(K,N)) = N .
-  eq (E31 = E32) = (key(E31) = key(E32) and nonce(E31) = nonce(E32)) .
+  eq (enc3(K,N) = enc3(K',N')) = (K = K' and N = N') .
 }
 
 --
@@ -142,10 +140,10 @@ mod! MESSAGE {
   op cipher3 : Message -> Cipher3
   --
   vars M M1 M2 : Message
-  vars C S R : Principal
-  var E1 : Cipher1
-  var E2 : Cipher2
-  var E3 : Cipher3
+  vars C S R C' S' R' : Principal
+  vars E1 E1' : Cipher1
+  vars E2 E2' : Cipher2
+  vars E3 E3' : Cipher3
   --
   eq m1?(m1(C,S,R,E1)) = true .
   eq m1?(m2(C,S,R,E2)) = false .
@@ -182,6 +180,10 @@ mod! MESSAGE {
       = (m3?(M2) and creator(M1) = creator(M2) and sender(M1) = sender(M2) and
          receiver(M1) = receiver(M2) and cipher3(M1) = cipher3(M2))
       if m3?(M1) .
+
+  eq (m1(C,S,R,E1) = m1(C',S',R',E1')) = (C = C' and S = S' and R = R' and E1 = E1') .
+  eq (m2(C,S,R,E2) = m2(C',S',R',E2')) = (C = C' and S = S' and R = R' and E2 = E2') .
+  eq (m3(C,S,R,E3) = m3(C',S',R',E3')) = (C = C' and S = S' and R = R' and E3 = E3') .
 }
 
 mod! BAG (D :: TRIV) {
@@ -192,8 +194,10 @@ mod! BAG (D :: TRIV) {
   var B : Bag
   vars E1 E2 : Elt.D
   eq E1 \in void = false .
-  ceq E1 \in (E2,B) = true if E1 = E2 .
-  ceq E1 \in (E2,B) = E1 \in B if not(E1 = E2) .
+  -- ceq E1 \in (E2,B) = true if E1 = E2 .
+  -- ceq E1 \in (E2,B) = E1 \in B if not(E1 = E2) .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2,B) = (E1 = E2) or (E1 \in B) .
 }
 
 mod! SET (D :: TRIV) {
@@ -204,15 +208,23 @@ mod! SET (D :: TRIV) {
   var S : Set
   vars E1 E2 : Elt.D
   eq E1 \in empty = false .
-  ceq E1 \in (E2 S) = true if E1 = E2 .
-  ceq E1 \in (E2 S) = E1 \in S if not(E1 = E2) .
+  -- ceq E1 \in (E2 S) = true if E1 = E2 .
+  -- ceq E1 \in (E2 S) = E1 \in S if not(E1 = E2) .
+  eq E1 \in E2 = (E1 = E2) .
+  eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
 }
 
 mod! COLLECTION(D :: TRIV) {
   [Elt.D < Collection]
   op _\in_ : Elt.D Collection -> Bool
 
--- lemma, add by @duongtd 21/01/28
+  -- var S : Collection 
+  -- vars E1 E2 : Elt.D
+
+  -- eq E1 \in E2 = (E1 = E2) .
+  -- eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
+
+-- -- lemma, add by @duongtd 21/01/28
   op lm1 : Elt.D Elt.D Collection -> Bool
   vars E1 E2 : Elt.D
   var C : Collection
@@ -258,7 +270,7 @@ mod! NETWORK {
   --
   var NW : Network
   var M : Message
-  var N : Nonce
+  vars N N' : Nonce
   var E1 : Cipher1
   var E2 : Cipher2
   var E3 : Cipher3
@@ -283,10 +295,14 @@ mod! NETWORK {
          not(m2?(M) and key(cipher2(M)) = intruder and nonce1(cipher2(M)) = N) and
          not(m2?(M) and key(cipher2(M)) = intruder and nonce2(cipher2(M)) = N) and
          not(m3?(M) and key(cipher3(M)) = intruder and nonce(cipher3(M)) = N) .
-
--- lemma, add by @duongtd 21/01/29
-  op lm2 : Nonce Message Network -> Bool .
-  eq lm2(N,M,NW) = (N \in cnonce(M) and M \in NW) implies N \in cnonce(NW) .
+  
+-- lemmas, updated by @duongtd 21/02/03
+  -- op lm2 : Nonce Message Network -> Bool .
+  -- eq lm2(N,M,NW) = (N \in cnonce(M) and M \in NW) implies N \in cnonce(NW) .
+  ceq nonce2(cipher2(M)) \in cnonce(NW) = true
+    if m2?(M) and key(cipher2(M)) = intruder and M \in NW .
+  ceq nonce(cipher1(M)) \in cnonce(NW) = true
+    if m1?(M) and key(cipher1(M)) = intruder and M \in NW .
   
   --
   -- cenc1 : the collection of cipher1's gleaned by the intruder.
@@ -299,10 +315,12 @@ mod! NETWORK {
   ceq E1 \in cenc1(M,NW) = E1 \in cenc1(NW)
       if not(m1?(M) and not(key(cipher1(M)) = intruder) and E1 = cipher1(M)) .
 
--- lemma, add by @duongtd 21/01/29
-  op lm3 : Cipher1 Message Network -> Bool .
-  eq lm3(E1,M,NW) = (E1 \in cenc1(M) and M \in NW) implies E1 \in cenc1(NW) .
-  
+-- lemma, updated by @duongtd 21/02/03
+  -- op lm3 : Cipher1 Message Network -> Bool .
+  -- eq lm3(E1,M,NW) = (E1 \in cenc1(M) and M \in NW) implies E1 \in cenc1(NW) .
+  ceq cipher1(M) \in cenc1(NW) = true
+    if m1?(M) and not(key(cipher1(M)) = intruder) and M \in NW .
+
   --
   -- cenc2 : the collection of cipher2's gleaned by the intruder.
   -- If the cipher is encrypted by the intruder's public key, it is not necessary
@@ -314,10 +332,12 @@ mod! NETWORK {
   ceq E2 \in cenc2(M,NW) = E2 \in cenc2(NW)
       if not(m2?(M) and not(key(cipher2(M)) = intruder) and E2 = cipher2(M)) .
   
--- lemma, add by @duongtd 21/01/29
-  op lm4 : Cipher2 Message Network -> Bool .
-  eq lm4(E2,M,NW) = (E2 \in cenc2(M) and M \in NW) implies E2 \in cenc2(NW) .
-  
+-- lemma, updated by @duongtd 21/02/03
+  -- op lm4 : Cipher2 Message Network -> Bool .
+  -- eq lm4(E2,M,NW) = (E2 \in cenc2(M) and M \in NW) implies E2 \in cenc2(NW) .
+  ceq cipher2(M) \in cenc2(NW) = true
+    if m2?(M) and not(key(cipher2(M)) = intruder) and M \in NW .
+
   --
   -- cenc3 : the collection of cipher3's gleaned by the intruder.
   -- If the cipher is encrypted by the intruder's public key, it is not necessary
@@ -460,7 +480,7 @@ mod INV {
   op e2 : -> Cipher2 
   op e3 : -> Cipher3 
   op r : -> Random
-  ops n n2 : -> Nonce
+  ops n n1 n2 : -> Nonce
   ops p q p1 q1 : -> Principal
 -- declare invariants to prove
   op inv100 : System Cipher1 -> Bool
