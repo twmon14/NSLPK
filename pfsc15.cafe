@@ -35,41 +35,41 @@ open INV .
 
   :postpone .
 
--- -- fkm12, ignore 10,11,12
---   :apply(tc)
---   :postpone .
---   :postpone .
---   :postpone .
+-- fkm12, ignore 10,11,12
+  :apply(tc)
+  :postpone .
+  :postpone .
+  :postpone .
 
--- 	:def csb4 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
+	:def csb4 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
 
--- 	:apply(csb4)
+	:apply(csb4)
 
--- 	:def csb6 = :ctf {eq P0#Principal = intruder .}
+	:def csb6 = :ctf {eq P0#Principal = intruder .}
 
--- 	:apply(csb6)
+	:apply(csb6)
 
--- 	:def csb7 = :ctf {eq nonce2(C@Cipher2) = N#Nonce .}
+	:def csb7 = :ctf {eq nonce2(C@Cipher2) = N#Nonce .}
 
--- 	:apply(csb7)
+	:apply(csb7)
 
--- 	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
+	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
 
--- 	:apply (rd)
+	:apply (rd)
 
--- 	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
+	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
 
--- 	:apply (rd)
+	:apply (rd)
 
--- 	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
+	:imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
 
--- 	:apply (rd)
+	:apply (rd)
 
---     :imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
+    :imp [inv15] by {C2:Cipher2 <- C@Cipher2 ;}
 
--- 	:apply (rd)
+	:apply (rd)
 
---   :postpone .
+  :postpone .
 
 -- -- fkm21, ignore 10,11,12
 --   :apply(tc)
