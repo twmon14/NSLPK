@@ -348,6 +348,10 @@ mod! NETWORK {
       if m3?(M) and not(key(cipher3(M)) = intruder) and E3 = cipher3(M) .
   ceq E3 \in cenc3(M,NW) = E3 \in cenc3(NW)
       if not(m3?(M) and not(key(cipher3(M)) = intruder) and E3 = cipher3(M)) .
+    
+  ceq cipher3(M) \in cenc3(NW) = true
+    if m3?(M) and not(key(cipher3(M)) = intruder) and M \in NW .
+
 }
 
 mod* NSLPK {
@@ -479,9 +483,9 @@ mod INV {
   op e1 : -> Cipher1 
   op e2 : -> Cipher2 
   op e3 : -> Cipher3 
-  op r : -> Random
-  ops n n1 n2 : -> Nonce
-  ops p q p1 q1 : -> Principal
+  -- op r : -> Random
+  -- ops n1 n2 : -> Nonce
+  -- ops p q p1 q1 : -> Principal
 -- declare invariants to prove
   op inv100 : System Cipher1 -> Bool
   op inv110 : System Cipher2 -> Bool
