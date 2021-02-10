@@ -365,7 +365,7 @@ open INV .
 
 	:apply(csb35)
 
-	:def csb36 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random) .}
+	:def csb36 = :ctf {eq nonce(C1@Cipher1) = n(P#Principal,intruder,R#Random) .}
 
 	:apply(csb36)
 
@@ -373,7 +373,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb37 = :ctf {eq nonce(C@Cipher1) = nonce(cipher1(M#Message)) .}
+	:def csb37 = :ctf {eq nonce(C1@Cipher1) = nonce(cipher1(M#Message)) .}
 
 	:apply(csb37)
 
