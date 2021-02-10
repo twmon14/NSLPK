@@ -486,7 +486,7 @@ open INV .
   
   eq (sender(r3) = intruder) = false .
   eq r1 = intruder .
-  eq n(intruder,sender(r3),r2) \in cnonce(r3 , nw10) = true .
+  eq n(intruder,sender(r3),r2) \in cnonce(nw(s)) = true .
 	red inv160(s,n(intruder,sender(r3),r2)) implies inv150(s,c1) implies inv150(sdm2(s,r1,r2,r3),c1) .
 close
 
@@ -509,7 +509,7 @@ open INV .
   
   eq (sender(r3) = intruder) = false .
   eq r1 = intruder .
-  eq n(intruder,sender(r3),r2) \in cnonce(r3 , nw10) = false .
+  eq n(intruder,sender(r3),r2) \in cnonce(nw(s)) = false .
 	red inv160(s,n(intruder,sender(r3),r2)) implies inv150(s,c1) implies inv150(sdm2(s,r1,r2,r3),c1) .
 close
 
