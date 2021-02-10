@@ -474,7 +474,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -497,7 +496,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -520,7 +518,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -542,7 +539,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -563,7 +559,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -585,7 +580,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -607,7 +601,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -627,7 +620,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -643,7 +635,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -658,7 +649,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq (receiver(r3) = r1) = false .
@@ -672,7 +662,6 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = false .
 	red inv150(s,c1) implies inv150(sdm2(s,r1,r2,r3),c1) .
@@ -685,8 +674,7 @@ open INV .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-	op nw10 : -> Network .
-  eq r3 \in nw(s) = false .
+  	eq r3 \in nw(s) = false .
 	red inv150(s,c1) implies inv150(sdm2(s,r1,r2,r3),c1) .
 close
 
