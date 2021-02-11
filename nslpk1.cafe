@@ -276,7 +276,7 @@ mod! NETWORK {
   var E3 : Cipher3
   --
   -- cnonce : the collection of nonces gleaned by the intruder.
-  -- If a noce is created by the intruder, the nonce is available to the intruder.
+  -- If a nonce is created by the intruder, the nonce is available to the intruder.
   -- If there exists a message in the network and the cipher in the message is
   -- encrypted with the intruder's public key, the nonces in the cipher are
   -- available to the intruder. Those are the only nonces available to the intruder.
