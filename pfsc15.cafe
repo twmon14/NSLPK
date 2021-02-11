@@ -258,38 +258,35 @@ open INV .
   :postpone .
   :postpone .
 
+	:def csb25 = :ctf [R#Random \in ur(S#System) .]
+
+	:apply(csb25)
+
+	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
+
+	:apply (rd)
+
+	:def csb26 = :ctf {eq P0#Principal = intruder .}
+
+	:apply(csb26)
+
+	:def csb27 = :ctf {eq nonce2(C2@Cipher2) = n(P#Principal,intruder,R#Random) .}
+
+	:apply(csb27)
+
+	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
+
+	:apply (rd)
+
+	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
+
+	:apply (rd)
+
+	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
+
+	:apply (rd)
+
   :postpone .
-  :postpone .
-
--- 	:def csb25 = :ctf [R#Random \in ur(S#System) .]
-
--- 	:apply(csb25)
-
--- 	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
-
--- 	:apply (rd)
-
--- 	:def csb26 = :ctf {eq P0#Principal = intruder .}
-
--- 	:apply(csb26)
-
--- 	:def csb27 = :ctf {eq nonce2(C2@Cipher2) = n(P#Principal,intruder,N#Nonce) .}
-
--- 	:apply(csb27)
-
--- 	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
-
--- 	:apply (rd)
-
--- 	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
-
--- 	:apply (rd)
-
--- 	:imp [inv15] by {C2:Cipher2 <- C2@Cipher2 ;}
-
--- 	:apply (rd)
-
---   :postpone .
 
 -- sdm2, ignore 10,11,12
   :apply(tc)
