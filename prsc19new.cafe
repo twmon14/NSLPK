@@ -579,12 +579,6 @@ open INV .
 
     eq r \in ur(s) = false .
     
-    -- eq q = intruder .
-
-    -- eq sender(r3) = p .
-    -- eq nonce(cipher1(r3)) = n(p,q,r) .
-    -- eq n = n(r1,sender(r3),r2) .
-    -- eq r1 = q .
     eq n(p,q,r) \in cnonce(nw(s)) = true .
 	red inv210(s,p,q,r) implies inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
