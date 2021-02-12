@@ -175,119 +175,139 @@
 -- 	red inv240(s,p,q,r) implies inv240(fkm31(s,r1,r2,r3),p,q,r) .
 -- close
 
--- -- fkm32
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq r2 = intruder .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+-- fkm32
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq r2 = intruder .
+	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq (r2 = intruder) = false .
---     eq n(q,p,r) \in cnonce(nw(s)) = true .
---     eq r2 = q .
---     eq r3 = n(q,p,r) .
---     eq r \in ur(s) = true .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq r2 = q .
+    eq r3 = n(q,p,r) .
+    eq r \in ur(s) = true .
+	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq (r2 = intruder) = false .
---     eq n(q,p,r) \in cnonce(nw(s)) = true .
---     eq r2 = q .
---     eq r3 = n(q,p,r) .
---     eq r \in ur(s) = false .
--- 	red inv210(s,q,p,r) implies inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq r2 = q .
+    eq r3 = n(q,p,r) .
+    eq r \in ur(s) = false .
+	eq q = intruder .
+	red inv210(s,q,p,r) implies inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq (r2 = intruder) = false .
---     eq n(q,p,r) \in cnonce(nw(s)) = true .
---     eq r2 = q .
---     eq (r3 = n(q,p,r)) = false .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq r2 = q .
+    eq r3 = n(q,p,r) .
+    eq r \in ur(s) = false .
+	eq (q = intruder) = false .
+    eq n(q,p,r) \in cnonce(nw(s)) = true .
+	red inv210(s,q,p,r) implies inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq (r2 = intruder) = false .
---     eq n(q,p,r) \in cnonce(nw(s)) = true .
---     eq (r2 = q) = false .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq r2 = q .
+    eq r3 = n(q,p,r) .
+    eq r \in ur(s) = false .
+	eq (q = intruder) = false .
+    eq n(q,p,r) \in cnonce(nw(s)) = false .
+	red inv210(s,q,p,r) implies inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- -- ntnf
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = true .
---     eq (r2 = intruder) = false .
---     eq n(q,p,r) \in cnonce(nw(s)) = false .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq r2 = q .
+    eq (r3 = n(q,p,r)) = false .
+	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
---     eq r3 \in cnonce(nw(s)) = false .
--- 	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = true .
+    eq (r2 = intruder) = false .
+    eq (r2 = q) = false .
+	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
+open INV .
+  :id(nslpk1)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+    eq r3 \in cnonce(nw(s)) = false .
+	red inv240(s,p,q,r) implies inv240(fkm32(s,r1,r2,r3),p,q,r) .
+close
+
+eof
 -- -- sdm1(all true)
 -- open INV .
 --   :id(nslpk1)
