@@ -274,6 +274,7 @@ mod! NETWORK {
   var E1 : Cipher1
   var E2 : Cipher2
   var E3 : Cipher3
+  vars K P : Principal
   --
   -- cnonce : the collection of nonces gleaned by the intruder.
   -- If a nonce is created by the intruder, the nonce is available to the intruder.
@@ -320,6 +321,8 @@ mod! NETWORK {
   -- eq lm3(E1,M,NW) = (E1 \in cenc1(M) and M \in NW) implies E1 \in cenc1(NW) .
   ceq cipher1(M) \in cenc1(NW) = true
     if m1?(M) and not(key(cipher1(M)) = intruder) and M \in NW .
+  ceq enc1(K,nonce(E1),P) \in cenc1(NW) = E1 \in cenc1(NW)
+    if K = key(E1) and P = principal(E1)  . 
 
   --
   -- cenc2 : the collection of cipher2's gleaned by the intruder.
