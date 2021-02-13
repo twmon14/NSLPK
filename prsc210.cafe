@@ -1,353 +1,353 @@
--- -- init
--- open INV .
---   -- :id(nslpk1)
---   op p : -> Principal .
---   op q : -> Principal .
---   op r : -> Random .
---   red inv210(init,p,q,r) .
--- close
+-- init
+open INV .
+  :id(inv21)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  red inv210(init,p,q,r) .
+close
 
--- -- fkm11(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher1 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc1(nw(s))) = true .
---   eq key(r3) = intruder .
--- 	red inv100(s,r3) implies inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
--- close
+-- fkm11(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher1 .
+	op s : -> System .
+	eq (r3 \in cenc1(nw(s))) = true .
+  eq key(r3) = intruder .
+	red inv100(s,r3) implies inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher1 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc1(nw(s))) = true .
---     eq (key(r3) = intruder) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher1 .
+	op s : -> System .
+	eq (r3 \in cenc1(nw(s))) = true .
+  eq (key(r3) = intruder) = false .
+	red inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher1 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc1(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher1 .
+	op s : -> System .
+	eq (r3 \in cenc1(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm11(s,r1,r2,r3),p,q,r) .
+close
 
--- -- fkm12(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
---     eq n(p,q,r) = r3 .
--- 	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
--- close
+-- fkm12(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+  eq n(p,q,r) = r3 .
+	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
---     eq (n(p,q,r) = r3) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+  eq (n(p,q,r) = r3) = false .
+	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm12(s,r1,r2,r3),p,q,r) .
+close
 
--- -- fkm21(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher2 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc2(nw(s))) = true .
---     eq key(r3) = intruder .
+-- fkm21(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher2 .
+	op s : -> System .
+	eq (r3 \in cenc2(nw(s))) = true .
+  eq key(r3) = intruder .
 
--- 	red inv110(s,r3) implies inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
--- close
+	red inv110(s,r3) implies inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher2 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc2(nw(s))) = true .
---     eq (key(r3) = intruder) = false .
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher2 .
+	op s : -> System .
+	eq (r3 \in cenc2(nw(s))) = true .
+  eq (key(r3) = intruder) = false .
 
--- 	red inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
--- close
+	red inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher2 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc2(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher2 .
+	op s : -> System .
+	eq (r3 \in cenc2(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm21(s,r1,r2,r3),p,q,r) .
+close
 
--- -- fkm22(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = true .
---       eq n(p,q,r) = r3 .
+-- fkm22(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+  eq n(p,q,r) = r3 .
 
--- 	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
--- close
+	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = true .
---       eq (n(p,q,r) = r3) = false .
---       eq n(p,q,r) = r4 .
--- 	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+  eq (n(p,q,r) = r3) = false .
+  eq n(p,q,r) = r4 .
+	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = true .
---       eq (n(p,q,r) = r3) = false .
---       eq (n(p,q,r) = r4) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+  eq (n(p,q,r) = r3) = false .
+  eq (n(p,q,r) = r4) = false .
+	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm22(s,r1,r2,r3,r4),p,q,r) .
+close
 
--- -- fkm31(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher3 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc3(nw(s))) = true .
---       eq key(r3) = intruder .
+-- fkm31(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher3 .
+	op s : -> System .
+	eq (r3 \in cenc3(nw(s))) = true .
+  eq key(r3) = intruder .
 
--- 	red inv120(s,r3) implies inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
--- close
+	red inv120(s,r3) implies inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher3 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc3(nw(s))) = true .
---       eq (key(r3) = intruder) = false .
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher3 .
+	op s : -> System .
+	eq (r3 \in cenc3(nw(s))) = true .
+  eq (key(r3) = intruder) = false .
 
--- 	red inv120(s,r3) implies inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
--- close
+	red inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher3 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc3(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher3 .
+	op s : -> System .
+	eq (r3 \in cenc3(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm31(s,r1,r2,r3),p,q,r) .
+close
 
--- -- fkm32(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
---       eq n(p,q,r) = r3 .
--- 	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+-- fkm32(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+  eq n(p,q,r) = r3 .
+	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
---       eq (n(p,q,r) = r3) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+  eq (n(p,q,r) = r3) = false .
+	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = false .
--- 	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = false .
+	red inv210(s,p,q,r) implies inv210(fkm32(s,r1,r2,r3),p,q,r) .
+close
 
--- -- sdm1(all true)
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Random .
--- 	op s : -> System .
--- 	eq (r3 \in ur(s)) = true .
--- 	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
--- close
+-- sdm1(all true)
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = true .
+	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Random .
--- 	op s : -> System .
--- 	eq (r3 \in ur(s)) = false .
---       eq r = r3 .
--- 	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+  eq r = r3 .
+	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
+close
 
--- open INV .
---   -- :id(nslpk1)
---     op p : -> Principal .
---     op q : -> Principal .
---     op r : -> Random .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Random .
--- 	op s : -> System .
--- 	eq (r3 \in ur(s)) = false .
---       eq (r = r3) = false .
--- 	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
--- close
+open INV .
+  :id(inv21)
+    op p : -> Principal .
+    op q : -> Principal .
+    op r : -> Random .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+  eq (r = r3) = false .
+	red inv210(s,p,q,r) implies inv210(sdm1(s,r1,r2,r3),p,q,r) .
+close
 
--- sdm2
+-- sdm2(all true)
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -365,7 +365,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -384,7 +384,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -406,7 +406,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -429,7 +429,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -452,7 +452,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -473,7 +473,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -494,7 +494,7 @@ close
 
 -- true
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -511,7 +511,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -527,7 +527,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -542,7 +542,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -556,7 +556,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -568,10 +568,9 @@ open INV .
 	red inv210(s,p,q,r) implies inv210(sdm2(s,r1,r2,r3),p,q,r) .
 close
 
-
--- sdm3
+-- sdm3(all true)
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
   op p : -> Principal .
   op q : -> Principal .
   op r : -> Random .
@@ -604,7 +603,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
   op p : -> Principal .
   op q : -> Principal .
   op r : -> Random .
@@ -636,7 +635,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
   op p : -> Principal .
   op q : -> Principal .
   op r : -> Random .
@@ -667,9 +666,8 @@ open INV .
 	red inv150(s,cipher2(r4)) implies inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
--- false
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
   op p : -> Principal .
   op q : -> Principal .
   op r : -> Random .
@@ -699,7 +697,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
   op p : -> Principal .
   op q : -> Principal .
   op r : -> Random .
@@ -728,7 +726,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -747,15 +745,15 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
 	eq (principal(cipher2(r4)) = sender(r4)) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -774,14 +772,14 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
-    eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
+  eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -800,13 +798,13 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq (key(cipher2(r4)) = r1) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -825,12 +823,12 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq (receiver(r4) = r1) = false .
+  eq (receiver(r4) = r1) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -853,7 +851,7 @@ open INV .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -876,7 +874,7 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -898,7 +896,7 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -912,14 +910,14 @@ open INV .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq (receiver(r3) = sender(r4)) = false .
+  eq sender(r3) = r1 .
+  eq (receiver(r3) = sender(r4)) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv21)
     op p : -> Principal .
     op q : -> Principal .
     op r : -> Random .
@@ -933,16 +931,16 @@ open INV .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq (sender(r3) = r1) = false .
+  eq (sender(r3) = r1) = false .
 	red inv210(s,p,q,r) implies inv210(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+  :id(inv21)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -958,10 +956,10 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+  :id(inv21)	
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -976,10 +974,10 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+  :id(inv21)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -993,10 +991,10 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+  :id(inv21)	
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -1009,10 +1007,10 @@ close
 
 --> true
 open INV .
-  -- :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+  :id(inv21)	
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
@@ -1023,5 +1021,5 @@ open INV .
 close
 
 open INV .
-  :proof(nslpk1)
+  :proof(inv21)
 close
