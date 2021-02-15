@@ -304,6 +304,8 @@ mod! NETWORK {
     if m2?(M) and key(cipher2(M)) = intruder and M \in NW .
   ceq nonce(cipher1(M)) \in cnonce(NW) = true
     if m1?(M) and key(cipher1(M)) = intruder and M \in NW .
+  ceq n(sender(M),P,R:Random) \in cnonce(NW) = true
+    if m2?(M) and key(cipher2(M)) = intruder and M \in NW and n(sender(M),P,R:Random) = nonce2(cipher2(M)) .
   
   --
   -- cenc1 : the collection of cipher1's gleaned by the intruder.
@@ -354,6 +356,13 @@ mod! NETWORK {
     
   ceq cipher3(M) \in cenc3(NW) = true
     if m3?(M) and not(key(cipher3(M)) = intruder) and M \in NW .
+
+  ceq m1(creator(M), creator(M), P, enc1(P,N:Nonce,creator(M))) \in NW = true
+    if M \in NW and m1?(M) and receiver(M) = P and
+      N:Nonce = nonce(cipher1(M)) .
+  ceq m2(creator(M), P, Q, enc2(Q,N1:Nonce,N2:Nonce,P)) \in NW = true
+    if M \in NW and m2?(M) and sender(M) = P and receiver(M) = Q and
+      N1:Nonce = nonce1(cipher2(M)) and N2:Nonce = nonce2(cipher2(M)) .
 
   ceq enc2(P,N1:Nonce,nonce2(cipher2(M)),Q) \in cenc2(NW) = true
     if m2?(M) and sender(M) = Q and receiver(M) = P and

@@ -503,606 +503,718 @@
 -- sdm3
 --> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq q = intruder .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
 
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq sender(r4) = intruder .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
 
-    eq p = intruder .
+  eq (sender(r4) = intruder) = false .
+  eq p = intruder .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
-    eq (p = intruder) = false .
-	
-	eq r1 = p .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
+
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq p = creator(r3) .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+
 close
 
--- false
+--> deal
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
-    eq (p = intruder) = false .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
 
-	eq (r1 = p) = false .
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq (p = creator(r3)) = false .
 
-	eq enc3(q,n(q,p,r))\in cenc3(nw(s)) = false .
-	eq m3(p,p,q,enc3(q,n(q,p,r))) \in nw(s) = false .
-
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq enc3(sender(r4),n(sender(r4),p,r)) \in cenc3(nw(s)) = true .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
--- another approach
+--> deal
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
-    eq (p = intruder) = false .
-    eq (r1 = intruder) = false .
-    eq m2(q,q,r1,enc2(r1,n(r1,q,r2),n(q,p,r),q)) \in nw(s) = true .
-    eq (r1 = p) = true .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
+
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq (p = creator(r3)) = false .
+
+  eq enc3(sender(r4),n(sender(r4),p,r)) \in cenc3(nw(s)) = false .
+  eq m3(p,p,sender(r4),enc3(sender(r4),n(sender(r4),p,r))) \in nw(s) = true .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
+--> deal
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
-    eq (p = intruder) = false .
-    eq (r1 = intruder) = false .
-    eq m2(q,q,r1,enc2(r1,n(r1,q,r2),n(q,p,r),q)) \in nw(s) = true .
-    eq (r1 = p) = false .
-	red inv260(s,q,r1,n(r1,q,r2),n(q,p,r)) implies inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
+
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq (p = creator(r3)) = false .
+
+  eq enc3(sender(r4),n(sender(r4),p,r)) \in cenc3(nw(s)) = false .
+  eq m3(p,p,sender(r4),enc3(sender(r4),n(sender(r4),p,r))) \in nw(s) = false .
+  eq creator(r3) = intruder .
+  -- red nonce2(cipher2(r4)) \in cnonce(nw(s)) .
+  red inv130(s,n(sender(r4),p,r)) implies inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
--- ntnf
+--> deal
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    op nw10 : -> Network .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq nonce2(cipher2(r4)) = n(q,p,r) .
-    eq (q = intruder) = false .
-    eq (p = intruder) = false .
-    eq (r1 = intruder) = false .
-    eq m2(q,q,r1,enc2(r1,n(r1,q,r2),n(q,p,r),q)) \in nw(s) = false .
-	red inv170(s,r1,q,creator(r4),r2,n(q,p,r)) implies inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
+
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq (p = creator(r3)) = false .
+
+  eq enc3(sender(r4),n(sender(r4),p,r)) \in cenc3(nw(s)) = false .
+  eq m3(p,p,sender(r4),enc3(sender(r4),n(sender(r4),p,r))) \in nw(s) = false .
+  eq (creator(r3) = intruder) = false .
+
+  eq m2(sender(r4),sender(r4),creator(r3),enc2(creator(r3),
+    n(creator(r3),sender(r4),r2), n(sender(r4),p,r),sender(r4))) 
+    \in nw(s) = true .
+  red inv260(s,q,r1,n(r1,q,r2),n(q,p,r))
+    implies inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
-eof
+--> only this one
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    op nw10 : -> Network .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
 
-    eq sender(r4) = q .
-    eq (nonce2(cipher2(r4)) = n(q,p,r)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
-close
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq nonce2(cipher2(r4)) = n(sender(r4),p,r) .
 
-open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    op nw10 : -> Network .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq principal(cipher2(r4)) = sender(r4) .
+  eq (sender(r4) = intruder) = false .
+  eq (p = intruder) = false .
+  eq (p = creator(r3)) = false .
 
-    eq (sender(r4) = q) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  eq enc3(sender(r4),n(sender(r4),p,r)) \in cenc3(nw(s)) = false .
+  eq m3(p,p,sender(r4),enc3(sender(r4),n(sender(r4),p,r))) \in nw(s) = false .
+  eq (creator(r3) = intruder) = false .
+
+  eq m2(sender(r4),sender(r4),creator(r3),enc2(creator(r3),
+    n(creator(r3),sender(r4),r2), n(sender(r4),p,r),sender(r4))) 
+    \in nw(s) = false .
+
+  red inv170(s,r1,sender(r4),creator(r4),r2,n(sender(r4),p,r))
+    implies inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
-	eq (principal(cipher2(r4)) = sender(r4)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  eq (nonce2(cipher2(r4)) = n(sender(r4),p,r)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq key(cipher2(r4)) = r1 .
-    eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq q = sender(r4) .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq (nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
-	eq (key(cipher2(r4)) = r1) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq q = sender(r4) .
+  eq (nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq principal(cipher1(r3)) = r1 .
-    eq (receiver(r4) = r1) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq (q = sender(r4)) = false .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2) .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
-	eq (principal(cipher1(r3)) = r1) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq (q = sender(r4)) = false .
+  eq nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2) .
+  eq (nonce1(cipher2(r4)) = n(creator(r3),sender(r4),r2)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-    eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
-	eq (nonce(cipher1(r3)) = n(r1,sender(r4),r2)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq principal(cipher2(r4)) = sender(r4) .
+
+  eq (q = sender(r4)) = false .
+  eq (nonce(cipher1(r3)) = n(creator(r3),sender(r4),r2)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq (key(cipher1(r3)) = sender(r4)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq key(cipher2(r4)) = creator(r3) .
+  eq (principal(cipher2(r4)) = sender(r4)) = false .
+
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq (receiver(r3) = sender(r4)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq receiver(r4) = creator(r3) .
+  eq (key(cipher2(r4)) = creator(r3)) = false .
+
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq creator(r3) = r1 .
-    eq (sender(r3) = r1) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq principal(cipher1(r3)) = creator(r3) .
+  eq (receiver(r4) = creator(r3)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = true .
-	eq (creator(r3) = r1) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
+  eq (principal(cipher1(r3)) = creator(r3)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = true .
-	eq m2?(r4) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq receiver(r3) = sender(r4) .
+  eq (key(cipher1(r3)) = sender(r4)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = true .
-	eq m1?(r3) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq sender(r3) = creator(r3) .
+  eq (receiver(r3) = sender(r4)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = true .
-	eq (r4 \in nw(s)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq r1 = creator(r3) .
+  eq (sender(r3) = creator(r3)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
---> true
 open INV .
-  :id(nslpk1)	
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
-	eq (r3 \in nw(s)) = false .
-	red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = true .
+  eq (r1 = creator(r3)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+close
+
+open INV .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = true .
+  eq m2?(r4) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+close
+
+open INV .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = true .
+  eq m1?(r3) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+close
+
+open INV .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = true .
+  eq (r4 \in nw(s)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
+close
+
+open INV .
+  --  :id(nslpk1)
+  op p : -> Principal .
+  op q : -> Principal .
+  op r : -> Random .
+  op r1 : -> Principal .
+  op r2 : -> Random .
+  op r3 : -> Message .
+  op r4 : -> Message .
+  op s : -> System .
+  eq (r3 \in nw(s)) = false .
+  red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
 -- open INV .
