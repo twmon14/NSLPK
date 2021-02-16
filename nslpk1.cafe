@@ -342,6 +342,8 @@ mod! NETWORK {
   -- eq lm4(E2,M,NW) = (E2 \in cenc2(M) and M \in NW) implies E2 \in cenc2(NW) .
   ceq cipher2(M) \in cenc2(NW) = true
     if m2?(M) and not(key(cipher2(M)) = intruder) and M \in NW .
+  ceq m2(Q1,Q,P,E2) \in NW = false 
+    if E2 \in cenc2(NW) = false and not(key(E2) = intruder) .
 
   --
   -- cenc3 : the collection of cipher3's gleaned by the intruder.
