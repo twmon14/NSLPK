@@ -1,120 +1,141 @@
--- -- init
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
---   red inv180(init,p,q,q1,r,n) .
--- close
-
--- -- fkm11(all true)
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher1 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc1(nw(s))) = true .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher1 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc1(nw(s))) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- -- fkm12(all true)
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- -- fkm21(all true)
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher2 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc2(nw(s))) = true .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Cipher2 .
--- 	op s : -> System .
--- 	eq (r3 \in cenc2(nw(s))) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- -- fkm22(all true)
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = true .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = true .
--- 	eq (r4 \in cnonce(nw(s))) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Nonce .
--- 	op r4 : -> Nonce .
--- 	op s : -> System .
--- 	eq (r3 \in cnonce(nw(s))) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,q1,r,n) .
--- close
-
--- fkm31
+-- init
 open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+  red inv180(init,p,q,p1,r,n) .
+close
+
+-- fkm11(all true)
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher1 .
+	op s : -> System .
+	eq (r3 \in cenc1(nw(s))) = true .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm11(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher1 .
+	op s : -> System .
+	eq (r3 \in cenc1(nw(s))) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm11(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+-- fkm12(all true)
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm12(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm12(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+-- fkm21(all true)
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher2 .
+	op s : -> System .
+	eq (r3 \in cenc2(nw(s))) = true .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm21(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Cipher2 .
+	op s : -> System .
+	eq (r3 \in cenc2(nw(s))) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm21(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+-- fkm22(all true)
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = true .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = true .
+	eq (r4 \in cnonce(nw(s))) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Nonce .
+	op r4 : -> Nonce .
+	op s : -> System .
+	eq (r3 \in cnonce(nw(s))) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(fkm22(s,r1,r2,r3,r4),p,q,p1,r,n) .
+close
+
+-- fkm31(all true)
+open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -129,11 +150,12 @@ open INV .
   eq r1 = p .
   eq r2 = q .
 
-  eq p = intruder .
+  eq intruder = p .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -154,6 +176,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -175,6 +198,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -196,6 +220,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -213,6 +238,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -228,8 +254,8 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- long term
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -243,8 +269,8 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- long term
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -257,8 +283,8 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- long term
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -271,8 +297,8 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- long term
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -285,8 +311,9 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm31(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- fkm32
+-- fkm32(all true)
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -305,6 +332,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -324,6 +352,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -343,6 +372,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -360,6 +390,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -376,6 +407,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -391,6 +423,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -405,6 +438,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -419,6 +453,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -432,31 +467,36 @@ open INV .
 	red inv180(s,p,q,p1,r,n) implies inv180(fkm32(s,r1,r2,r3),p,q,p1,r,n) .
 close
 
--- -- sdm1(all true)
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Random .
--- 	op s : -> System .
--- 	eq (r3 \in ur(s)) = true .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(sdm1(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- open INV .
---   -- :id(nslpk1)
--- 	op n : -> Nonce .
--- 	op r1 : -> Principal .
--- 	op r2 : -> Principal .
--- 	op r3 : -> Random .
--- 	op s : -> System .
--- 	eq (r3 \in ur(s)) = false .
--- 	red inv180(s,p,q,q1,r,n) implies inv180(sdm1(s,r1,r2,r3),p,q,q1,r,n) .
--- close
-
--- -- sdm2
+-- sdm1(all true)
 open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = true .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm1(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+open INV .
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
+	op n : -> Nonce .
+	op r1 : -> Principal .
+	op r2 : -> Principal .
+	op r3 : -> Random .
+	op s : -> System .
+	eq (r3 \in ur(s)) = false .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm1(s,r1,r2,r3),p,q,p1,r,n) .
+close
+
+-- sdm2(all true)
+open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -475,6 +515,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -494,6 +535,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -519,6 +561,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -545,6 +588,7 @@ close
 
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -569,6 +613,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -592,6 +637,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -614,6 +660,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -635,6 +682,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -652,6 +700,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -668,6 +717,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -683,6 +733,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -697,6 +748,7 @@ open INV .
 close
 
 open INV .
+  :id(inv18)
   ops p q p1 : -> Principal .
   op r : -> Random .
   op n : -> Nonce .
@@ -712,7 +764,9 @@ close
 -- sdm3(all true)
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -733,11 +787,13 @@ open INV .
 	eq key(cipher2(r4)) = r1 .
     eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
 	eq principal(cipher2(r4)) = sender(r4) .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -758,11 +814,13 @@ open INV .
 	eq key(cipher2(r4)) = r1 .
     eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
 	eq (principal(cipher2(r4)) = sender(r4)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -782,11 +840,13 @@ open INV .
     eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
     eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -805,11 +865,13 @@ open INV .
 	eq principal(cipher1(r3)) = r1 .
     eq receiver(r4) = r1 .
 	eq (key(cipher2(r4)) = r1) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -827,11 +889,13 @@ open INV .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
     eq (receiver(r4) = r1) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -848,11 +912,13 @@ open INV .
     eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq (principal(cipher1(r3)) = r1) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -868,12 +934,14 @@ open INV .
     eq receiver(r3) = sender(r4) .
     eq key(cipher1(r3)) = sender(r4) .
 	eq (nonce(cipher1(r3)) = n(r1,sender(r4),r2)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -888,12 +956,14 @@ open INV .
     eq sender(r3) = r1 .
     eq receiver(r3) = sender(r4) .
     eq (key(cipher1(r3)) = sender(r4)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -907,12 +977,14 @@ open INV .
 	eq creator(r3) = r1 .
     eq sender(r3) = r1 .
     eq (receiver(r3) = sender(r4)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -925,12 +997,14 @@ open INV .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
     eq (sender(r3) = r1) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -942,12 +1016,14 @@ open INV .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq (creator(r3) = r1) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -958,12 +1034,14 @@ open INV .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -973,12 +1051,14 @@ open INV .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -987,12 +1067,14 @@ open INV .
 	op s : -> System .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
 --> true
 open INV .
-  -- :id(nslpk1)
+  :id(inv18)
+  ops p q p1 : -> Principal .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -1000,9 +1082,9 @@ open INV .
 	op r4 : -> Message .
 	op s : -> System .
 	eq (r3 \in nw(s)) = false .
-	red inv180(s,p,q,q1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
+	red inv180(s,p,q,p1,r,n) implies inv180(sdm3(s,r1,r2,r3,r4),p,q,p1,r,n) .
 close
 
--- open INV .
---   :proof(nslpk1)
--- close
+open INV .
+  :proof(inv18)
+close
