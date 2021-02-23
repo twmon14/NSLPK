@@ -78,7 +78,7 @@ open INV .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = true .
-  eq enc2(p,n(p,q,r),n,q) = r3 .
+  	eq enc2(p,n(p,q,r),n,q) = r3 .
 	red inv190(s,p,q,r,n) implies inv190(fkm21(s,r1,r2,r3),p,q,r,n) .
 close
 
@@ -93,7 +93,7 @@ open INV .
 	op r3 : -> Cipher2 .
 	op s : -> System .
 	eq (r3 \in cenc2(nw(s))) = true .
-  eq (enc2(p,n(p,q,r),n,q) = r3) = false .
+	eq (enc2(p,n(p,q,r),n,q) = r3) = false .
 	red inv190(s,p,q,r,n) implies inv190(fkm21(s,r1,r2,r3),p,q,r,n) .
 close
 
@@ -142,8 +142,8 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-  eq (p = intruder) = false .
-  eq r \in ur(s) = true .
+  	eq (p = intruder) = false .
+  	eq r \in ur(s) = true .
   	red inv190(s,p,q,r,n) implies inv190(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
@@ -160,9 +160,9 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-  eq (p = intruder) = false .
-  eq r \in ur(s) = false .
-  eq n(p,q,r) = r3 .
+  	eq (p = intruder) = false .
+  	eq r \in ur(s) = false .
+  	eq n(p,q,r) = r3 .
   	red inv210(s,p,q,r) implies inv190(s,p,q,r,n) implies inv190(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
@@ -179,10 +179,10 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-  eq (p = intruder) = false .
-  eq r \in ur(s) = false .
-  eq (n(p,q,r) = r3) = false .
-  eq n(p,q,r) = r4 .
+  	eq (p = intruder) = false .
+  	eq r \in ur(s) = false .
+  	eq (n(p,q,r) = r3) = false .
+  	eq n(p,q,r) = r4 .
   	red inv210(s,p,q,r) implies inv190(s,p,q,r,n) implies inv190(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
@@ -199,10 +199,10 @@ open INV .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-  eq (p = intruder) = false .
-  eq r \in ur(s) = false .
-  eq (n(p,q,r) = r3) = false .
-  eq (n(p,q,r) = r4) = false .
+  	eq (p = intruder) = false .
+  	eq r \in ur(s) = false .
+  	eq (n(p,q,r) = r3) = false .
+  	eq (n(p,q,r) = r4) = false .
   	red inv190(s,p,q,r,n) implies inv190(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
@@ -340,7 +340,7 @@ open INV .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = true .
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -361,7 +361,7 @@ open INV .
  
   eq p = intruder .
 
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 
@@ -384,7 +384,7 @@ open INV .
   eq (p = intruder) = false .
 
   eq r = r2 .
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -411,7 +411,7 @@ open INV .
 
   eq r \in ur(s) = true .
 
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -441,7 +441,7 @@ open INV .
   eq n(p,intruder,r) = nonce(cipher1(r3)) .
   eq n(intruder,p,r2) = n .
 
-	red inv210(s,p,intruder,r) implies inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv210(s,p,intruder,r) implies inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -470,7 +470,7 @@ open INV .
   eq sender(r3) = p .
   eq n(p,intruder,r) = nonce(cipher1(r3)) .
   eq (n(intruder,p,r2) = n) = false .
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -497,8 +497,8 @@ open INV .
   eq q = r1 .
   eq r1 = intruder .
   eq sender(r3) = p .
-  eq (n(p,intruder,r) = nonce(cipher1(r3))) = false .
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  eq (n(p,intruder,r) = nonce(cipher1(r3))) = false . 
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
@@ -525,7 +525,7 @@ open INV .
   eq q = r1 .
   eq r1 = intruder .
   eq (sender(r3) = p) = false .
-	red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
+  red inv190(s,p,q,r,n) implies inv190(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
