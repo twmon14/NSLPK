@@ -225,7 +225,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb23 = :ctf {eq C@Cipher1  = enc1(P0#Principal,n(P#Principal,P0#Principal,R#Random),P#Principal).}
+	:def csb23 = :ctf {eq C@Cipher1  = enc1(P0#Principal,n(P#Principal,P0#Principal,R#Random),P#Principal) .}
 
 	:apply(csb23)
 
@@ -261,7 +261,7 @@ open INV .
 
 	:apply(csb27)
 
-	:def csb28 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random).}
+	:def csb28 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random) .}
 
 	:apply(csb28)
 
@@ -295,7 +295,7 @@ open INV .
 
 	:apply(csb32)
 
-	:def csb33 = :ctf {eq principal(cipher1(M#Message)) = sender(M#Message).}
+	:def csb33 = :ctf {eq principal(cipher1(M#Message)) = sender(M#Message) .}
 
 	:apply(csb33)
 
@@ -311,7 +311,7 @@ open INV .
 
 	:apply(csb35)
 
-	:def csb36 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random).}
+	:def csb36 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random) .}
 
 	:apply(csb36)
 
@@ -319,7 +319,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb37 = :ctf {eq nonce(C@Cipher1) = nonce(cipher1(M#Message)).}
+	:def csb37 = :ctf {eq nonce(C@Cipher1) = nonce(cipher1(M#Message)) .}
 
 	:apply(csb37)
 
@@ -381,15 +381,15 @@ open INV .
 
 	:apply(csb43)
 
-	:def csb44 = :ctf {eq receiver(M#Message) = sender(M0#Message).}
+	:def csb44 = :ctf {eq receiver(M#Message) = sender(M0#Message) .}
 
 	:apply(csb44)
 
-	:def csb45 = :ctf {eq key(cipher1(M#Message)) = sender(M0#Message).}
+	:def csb45 = :ctf {eq key(cipher1(M#Message)) = sender(M0#Message) .}
 
 	:apply(csb45)
 
-	:def csb46 = :ctf {eq nonce(cipher1(M#Message)) = n(P#Principal,sender(M0#Message),R#Random).}
+	:def csb46 = :ctf {eq nonce(cipher1(M#Message)) = n(P#Principal,sender(M0#Message),R#Random) .}
 
 	:apply(csb46)
 
@@ -405,11 +405,11 @@ open INV .
 
 	:apply(csb49)
 
-	:def csb50 = :ctf {eq nonce1(cipher2(M0#Message)) = n(P#Principal,sender(M0#Message),R#Random).}
+	:def csb50 = :ctf {eq nonce1(cipher2(M0#Message)) = n(P#Principal,sender(M0#Message),R#Random) .}
 
 	:apply(csb50)
 
-	:def csb51 = :ctf {eq principal(cipher2(M0#Message)) = sender(M0#Message).}
+	:def csb51 = :ctf {eq principal(cipher2(M0#Message)) = sender(M0#Message) .}
 
 	:apply(csb51)
 
@@ -417,7 +417,7 @@ open INV .
 
 	:apply(csb52)
 
-	:def csb53 = :ctf {eq nonce(C@Cipher1) = nonce2(cipher2(M0#Message)).}
+	:def csb53 = :ctf {eq nonce(C@Cipher1) = nonce2(cipher2(M0#Message)) .}
 
 	:apply(csb53)
 
