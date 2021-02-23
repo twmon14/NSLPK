@@ -1,53 +1,53 @@
 -- init
 open INV .
-  -- :id(inv17)
+  :id(inv17)
 	op p : -> Principal .
-  	op q : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
   red inv170(init,p,q,q1,r,n) .
 close
 
 -- fkm11(all trrue)
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = true .
-    eq p = intruder .
+  eq p = intruder .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-	op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Cipher1 .
 	op s : -> System .
 	eq (r3 \in cenc1(nw(s))) = true .
-    eq (p = intruder) = false .
+  eq (p = intruder) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-	op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -59,43 +59,43 @@ close
 
 -- fkm12(all true)
 open INV .
-  -- :id(inv17)
+  :id(inv17)
 	op p : -> Principal .
-  	op q : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq p = intruder .
+  eq p = intruder .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-  	op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+	op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
 	op r3 : -> Nonce .
 	op s : -> System .
 	eq (r3 \in cnonce(nw(s))) = true .
-    eq (p = intruder) = false .
+  eq (p = intruder) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+	op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -105,10 +105,9 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- fkm21
--- fkm21
+-- fkm21(all true)
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -124,7 +123,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -142,7 +141,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -164,9 +163,8 @@ open INV .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
-
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -189,7 +187,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -211,7 +209,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -232,7 +230,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -252,7 +250,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -271,7 +269,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -288,7 +286,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -302,10 +300,9 @@ open INV .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- fkm22
--- fkm22
+-- fkm22(all true)
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -323,7 +320,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -341,7 +338,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -358,7 +355,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -376,7 +373,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -394,7 +391,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -412,11 +409,11 @@ close
 
 -- fkm31(all true)
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -427,11 +424,11 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -443,11 +440,11 @@ close
 
 -- fkm32(all true)
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -458,11 +455,11 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Principal .
@@ -472,10 +469,9 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm32(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- sdm1
---> true
+-- sdm1(all true)
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -489,9 +485,8 @@ open INV .
   red inv170(s,p,q,q1,r,n) implies inv170(sdm1(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -507,7 +502,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -527,7 +522,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -547,7 +542,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -566,7 +561,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -584,7 +579,7 @@ open INV .
 close
 
 open INV .
-  -- :id(inv17)
+  :id(inv17)
   op p : -> Principal .
   op q : -> Principal .
   op q1 : -> Principal .
@@ -601,13 +596,12 @@ open INV .
 close
 
 -- sdm2(all true)
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -619,17 +613,15 @@ open INV .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = true .
-
   red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -641,19 +633,17 @@ open INV .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = false .
-
   eq (m2(q1,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),
-         enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = true .
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = true .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -667,51 +657,43 @@ open INV .
   eq r2 \in ur(s) = false .
   
   eq (m2(q1,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),
-         enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
   eq m2(q,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),
-         enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1)) .
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1)) .
 	
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op s : -> System .
-    
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
   eq key(cipher1(r3)) = r1 .
   eq principal(cipher1(r3)) = sender(r3) .
   eq r2 \in ur(s) = false .
-  
   eq (m2(q1,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),
-         enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
   eq (m2(q,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),
-         enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
---
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -725,13 +707,12 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -744,13 +725,12 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -762,13 +742,12 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -779,13 +758,12 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
@@ -795,279 +773,274 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
 
--- sdm3(true)
---> true
+-- sdm3(all true)
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
 	eq principal(cipher2(r4)) = sender(r4) .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
-    eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
+  eq nonce1(cipher2(r4)) = n(r1,sender(r4),r2) .
 	eq (principal(cipher2(r4)) = sender(r4)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq key(cipher2(r4)) = r1 .
-    eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
+  eq (nonce1(cipher2(r4)) = n(r1,sender(r4),r2)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq receiver(r4) = r1 .
+  eq receiver(r4) = r1 .
 	eq (key(cipher2(r4)) = r1) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq principal(cipher1(r3)) = r1 .
-    eq (receiver(r4) = r1) = false .
+  eq (receiver(r4) = r1) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq nonce(cipher1(r3)) = n(r1,sender(r4),r2) .
 	eq (principal(cipher1(r3)) = r1) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-    eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq key(cipher1(r3)) = sender(r4) .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq key(cipher1(r3)) = sender(r4) .
 	eq (nonce(cipher1(r3)) = n(r1,sender(r4),r2)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq receiver(r3) = sender(r4) .
-    eq (key(cipher1(r3)) = sender(r4)) = false .
+  eq sender(r3) = r1 .
+  eq receiver(r3) = sender(r4) .
+  eq (key(cipher1(r3)) = sender(r4)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq sender(r3) = r1 .
-    eq (receiver(r3) = sender(r4)) = false .
+  eq sender(r3) = r1 .
+  eq (receiver(r3) = sender(r4)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
 	eq creator(r3) = r1 .
-    eq (sender(r3) = r1) = false .
+  eq (sender(r3) = r1) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = true .
@@ -1075,80 +1048,76 @@ open INV .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
 	eq m2?(r4) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = true .
+  eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
---> true
 open INV .
-  -- :id(inv17)
-    op p : -> Principal .
-  	op q : -> Principal .
+  :id(inv17)
+  op p : -> Principal .
+  op q : -> Principal .
 	op q1 : -> Principal .
-  	op r : -> Random .
+  op r : -> Random .
 	op n : -> Nonce .
 	op r1 : -> Principal .
 	op r2 : -> Random .
 	op r3 : -> Message .
 	op r4 : -> Message .
 	op s : -> System .
-	eq (r3 \in nw(s)) = false .
+  eq (r3 \in nw(s)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
 
--- open INV .
---   :proof(inv17)
--- close
+open INV .
+  :proof(inv17)
+close
