@@ -1,6 +1,6 @@
 open INV .
 	:goal{
-		eq [nslpk1 :nonexec] : inv260(S:System,P:Principal,P0:Principal,N:Nonce,N0:Nonce) = true .
+		eq [inv26 :nonexec] : inv260(S:System,P:Principal,P0:Principal,N:Nonce,N0:Nonce) = true .
 	}
 
 	:ind on (S:System)
@@ -13,11 +13,11 @@ open INV .
 
 	:apply(csb1)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- fkm12
@@ -27,11 +27,11 @@ open INV .
 
 	:apply(csb2)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- fkm21
@@ -45,15 +45,15 @@ open INV .
 
 	:apply(csb4)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- fkm22
@@ -71,19 +71,19 @@ open INV .
 
 	:apply(csb7)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- fkm31
@@ -93,11 +93,11 @@ open INV .
 
 	:apply(csb8)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- fkm32
@@ -107,11 +107,11 @@ open INV .
 
 	:apply(csb9)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- init
@@ -125,11 +125,11 @@ open INV .
 
 	:apply(csb10)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- sdm2
@@ -159,7 +159,7 @@ open INV .
 
 	:apply(csb16)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
@@ -179,43 +179,43 @@ open INV .
 
 	:apply(csb20)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 -- sdm3
@@ -277,63 +277,63 @@ open INV .
 
 	:apply(csb34)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
+	:imp [inv26] by {N0:Nonce <- N0@Nonce ; N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P:Principal <- P@Principal ;}
 
 	:apply (rd)
 
