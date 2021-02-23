@@ -1,6 +1,6 @@
 open INV .
 	:goal{
-		eq [nslpk1 :nonexec] : inv250(S:System,P:Principal,P1:Principal,P0:Principal,R:Random,N:Nonce) = true .
+		eq [inv25 :nonexec] : inv250(S:System,P:Principal,P1:Principal,P0:Principal,R:Random,N:Nonce) = true .
 	}
 
 	:ind on (S:System)
@@ -13,11 +13,11 @@ open INV .
 
 	:apply(csb1)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- fkm12
@@ -27,11 +27,11 @@ open INV .
 
 	:apply(csb2)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- fkm21
@@ -45,15 +45,15 @@ open INV .
 
 	:apply(csb4)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- fkm22
@@ -91,7 +91,7 @@ open INV .
 
 	:apply(csb12)
 
-    :imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}	
+    :imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}	
     
     :apply (rd)
 
@@ -99,39 +99,39 @@ open INV .
 
 	:apply(csb13)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:postpone . -- inv210
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- fkm31
@@ -141,11 +141,11 @@ open INV .
 
 	:apply(csb14)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- fkm32
@@ -155,11 +155,11 @@ open INV .
 
 	:apply(csb15)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- init
@@ -173,7 +173,7 @@ open INV .
 
 	:apply(csb16)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
@@ -181,11 +181,11 @@ open INV .
 
 	:apply(csb17)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- sdm2
@@ -215,7 +215,7 @@ open INV .
 
 	:apply(csb23)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
@@ -223,31 +223,31 @@ open INV .
 
 	:apply(csb24)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 -- sdm3
@@ -309,63 +309,63 @@ open INV .
 
 	:apply(csb38)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv25] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
 	:apply (rd)
 
