@@ -1,6 +1,6 @@
 open INV .
 	:goal{
-		eq [nslpk1 :nonexec] : inv110(S:System,C:Cipher2) = true .
+		eq [inv11 :nonexec] : inv110(S:System,C:Cipher2) = true .
 	}
 
 	:ind on (S:System)
@@ -13,11 +13,11 @@ open INV .
 
 	:apply(csb1)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- fkm12
@@ -27,11 +27,11 @@ open INV .
 
 	:apply(csb2)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- fkm21
@@ -45,15 +45,15 @@ open INV .
 
 	:apply(csb4)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- fkm22
@@ -75,23 +75,23 @@ open INV .
 
 	:apply(csb8)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- fkm31
@@ -101,11 +101,11 @@ open INV .
 
 	:apply(csb9)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- fkm32
@@ -115,11 +115,11 @@ open INV .
 
 	:apply(csb10)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- init
@@ -133,11 +133,11 @@ open INV .
 
 	:apply(csb11)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- sdm2
@@ -167,7 +167,7 @@ open INV .
 
 	:apply(csb17)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
@@ -179,35 +179,35 @@ open INV .
 
 	:apply(csb19)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 -- sdm3
@@ -269,63 +269,63 @@ open INV .
 
 	:apply(csb33)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
-	:imp [nslpk1] by {C:Cipher2 <- C@Cipher2 ;}
+	:imp [inv11] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
