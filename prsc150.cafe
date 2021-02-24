@@ -114,7 +114,7 @@ open INV .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq (key(r3) = intruder) = false .
 	eq c1 = r3 .
-	red inv110(s,r3) implies inv150(s,c1) implies inv150(fkm21(s,r1,r2,r3),c1) .
+	red inv150(s,c1) implies inv150(fkm21(s,r1,r2,r3),c1) .
 close
 
 open INV .
@@ -127,7 +127,7 @@ open INV .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq (key(r3) = intruder) = false .
 	eq (c1 = r3) = false .
-	red inv110(s,r3) implies inv150(s,c1) implies inv150(fkm21(s,r1,r2,r3),c1) .
+	red inv150(s,c1) implies inv150(fkm21(s,r1,r2,r3),c1) .
 close
 
 open INV .
