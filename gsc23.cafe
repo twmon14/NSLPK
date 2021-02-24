@@ -149,7 +149,7 @@ open INV .
 
 	:imp [inv23] by {P0:Principal <- P0@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
-    :postpone . -- inv160
+	:apply (rd)
 
 	:def csb15 = :ctf {eq intruder  = P@Principal .}
 
@@ -157,7 +157,7 @@ open INV .
 
 	:imp [inv23] by {P0:Principal <- P0@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
-    :postpone . -- inv160
+	:apply (rd)
 
 	:def csb16 = :ctf {eq N#Nonce  = n(P0@Principal,P@Principal,R@Random) .}
 
@@ -165,7 +165,7 @@ open INV .
 
 	:imp [inv23] by {P0:Principal <- P0@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
-    :postpone . -- inv130
+	:apply (rd)
 
 	:def csb17 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
 
@@ -173,11 +173,11 @@ open INV .
 
 	:imp [inv23] by {P0:Principal <- P0@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
-    :postpone . -- inv130
+	:apply (rd)
 
 	:imp [inv23] by {P0:Principal <- P0@Principal ; P:Principal <- P@Principal ; R:Random <- R@Random ;}
 
-    :postpone . -- inv130
+	:apply (rd)
 
 -- init
 	:apply(tc)
