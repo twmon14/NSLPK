@@ -658,8 +658,8 @@ open INV .
   
   eq (m2(q1,q,p,enc2(p,n(p,q,r),n,q))
       = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = false .
-  eq m2(q,q,p,enc2(p,n(p,q,r),n,q))
-      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1)) .
+  eq (m2(q,q,p,enc2(p,n(p,q,r),n,q))
+      = m2(r1,r1,sender(r3),enc2(sender(r3),nonce(cipher1(r3)),n(r1,sender(r3),r2),r1))) = true .
 	
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
