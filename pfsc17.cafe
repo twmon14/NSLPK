@@ -334,8 +334,8 @@ open INV .
 
 	:apply (rd)
 
-    :def csb30 = :ctf {eq m2(P0@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
-    m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .}
+    :def csb30 = :ctf [m2(P0@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
+    m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .]
 
     :apply(csb30)
 
@@ -344,8 +344,8 @@ open INV .
 	:apply (rd)
     -- :postpone .
 
-    :def csb31 = :ctf {eq m2(P1@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
-    m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .}
+    :def csb31 = :ctf [m2(P1@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
+    m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .]
 
     :apply(csb31)
 
