@@ -3569,87 +3569,65 @@ open INV .
 	:apply (rd)
 
     -- inv17
-    :postpone .
+	:def csb364 = :ctf [M#Message \in nw(S#System) .]
 
-    -- :def csb364 = :ctf [M#Message \in nw(S#System) .]
+	:apply(csb364)
 
-	-- :apply(csb364)
+	:def csb365 = :ctf [m1?(M#Message) .]
 
-	-- :def csb365 = :ctf [m1?(M#Message) .]
+	:apply(csb365)
 
-	-- :apply(csb365)
+	:def csb366 = :ctf {eq receiver(M#Message) = P#Principal .}
 
-	-- :def csb366 = :ctf {eq receiver(M#Message) = P#Principal .}
+	:apply(csb366)
 
-	-- :apply(csb366)
+	:def csb367 = :ctf {eq key(cipher1(M#Message)) = P#Principal .}
 
-	-- :def csb367 = :ctf {eq key(cipher1(M#Message)) = P#Principal .}
+	:apply(csb367)
 
-	-- :apply(csb367)
+	:def csb368 = :ctf {eq principal(cipher1(M#Message)) = sender(M#Message) .}
 
-	-- :def csb368 = :ctf {eq principal(cipher1(M#Message)) = sender(M#Message) .}
+	:apply(csb368)
 
-	-- :apply(csb368)
+	:def csb369 = :ctf [R#Random \in ur(S#System) .]
 
-	-- :def csb369 = :ctf [R#Random \in ur(S#System) .]
+	:apply(csb369)
 
-	-- :apply(csb369)
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
+	:apply (rd)
 
-	-- :apply (rd)
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-    -- :def csb370 = :ctf {eq m2(P0@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
-    -- m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .}
+	:apply (rd)
 
-    -- :apply(csb370)
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-    -- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-	-- :apply (rd)
-    -- -- :postpone . -- nr
+	:apply (rd)
 
-    -- :def csb371 = :ctf {eq m2(P1@Principal,P1@Principal,P@Principal,enc2(P@Principal,n(P@Principal,P1@Principal,R@Random),N@Nonce,P1@Principal)) = 
-    -- m2(P#Principal,P#Principal,sender(M#Message),enc2(sender(M#Message),nonce(cipher1(M#Message)),n(P#Principal,sender(M#Message),R#Random),P#Principal)) .}
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-    -- :apply(csb371)
+	:apply (rd)
 
-    -- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-	-- :apply (rd)
-    -- -- :postpone .
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-    -- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-	-- :apply (rd)
-    -- -- :postpone .
+	:apply (rd)
 
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
+	:imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-	-- :apply (rd)
+	:apply (rd)
 
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
+    :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
+    P@Principal ; R:Random <- R@Random ;}
 
-	-- :apply (rd)
-
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-
-	-- :apply (rd)
-
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-
-	-- :apply (rd)
-
-	-- :imp [inv17] by {N:Nonce <- N@Nonce ; P0:Principal <- P0@Principal ; P1:Principal <- P1@Principal ; P:Principal <-
-    -- P@Principal ; R:Random <- R@Random ;}
-
-	-- :apply (rd)
-
+	:apply (rd)
+    
     -- inv18
     :def csb372 = :ctf [M#Message \in nw(S#System) .]
 
