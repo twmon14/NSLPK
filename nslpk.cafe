@@ -11,15 +11,15 @@
 -- One of the principals is the intruder denoted by constant intruder.
 --
 mod! PRINCIPAL {
-  [Principal]
-  op intruder : -> Principal
+  [Prin]
+  op intruder : -> Prin
 }
 
 --
 -- Unguessable random numbers for nonces
 --
 mod! RANDOM {
-  [Random]
+  [Rand]
 }
 
 --
@@ -30,14 +30,14 @@ mod! RANDOM {
 mod! NONCE {
   pr(PRINCIPAL + RANDOM)
   [Nonce]
-  op n : Principal Principal Random -> Nonce
-  op creator : Nonce -> Principal
-  op forwhom : Nonce -> Principal
-  op random : Nonce -> Random
+  op n : Prin Prin Rand -> Nonce
+  op creator : Nonce -> Prin
+  op forwhom : Nonce -> Prin
+  op random : Nonce -> Rand
   vars N1 N2 : Nonce
-  vars C C' : Principal
-  vars W W' : Principal
-  vars R R' : Random
+  vars C C' : Prin
+  vars W W' : Prin
+  vars R R' : Rand
   eq creator(n(C,W,R)) = C .
   eq forwhom(n(C,W,R)) = W .
   eq random(n(C,W,R)) = R .
@@ -52,14 +52,14 @@ mod! NONCE {
 mod! CIPHER1 {
   pr(PRINCIPAL + NONCE)
   [Cipher1]
-  op enc1 : Principal Nonce Principal -> Cipher1
-  op key : Cipher1 -> Principal
+  op enc1 : Prin Nonce Prin -> Cipher1
+  op key : Cipher1 -> Prin
   op nonce : Cipher1 -> Nonce
-  op principal : Cipher1 -> Principal
+  op principal : Cipher1 -> Prin
   vars E11 E12 : Cipher1
-  vars K K' : Principal
+  vars K K' : Prin
   vars N N' : Nonce
-  vars P P' : Principal
+  vars P P' : Prin
   eq key(enc1(K,N,P)) = K .
   eq nonce(enc1(K,N,P)) = N .
   eq principal(enc1(K,N,P)) = P .
@@ -74,16 +74,16 @@ mod! CIPHER1 {
 mod! CIPHER2 {
   pr(PRINCIPAL + NONCE)
   [Cipher2]
-  op enc2 : Principal Nonce Nonce Principal -> Cipher2
-  op key : Cipher2 -> Principal
+  op enc2 : Prin Nonce Nonce Prin -> Cipher2
+  op key : Cipher2 -> Prin
   op nonce1 : Cipher2 -> Nonce
   op nonce2 : Cipher2 -> Nonce
-  op principal : Cipher2 -> Principal
+  op principal : Cipher2 -> Prin
   vars E21 E22 : Cipher2
-  vars K K' : Principal
+  vars K K' : Prin
   vars N1 N1' : Nonce
   vars N2 N2' : Nonce
-  vars P P' : Principal
+  vars P P' : Prin
   eq key(enc2(K,N1,N2,P)) = K .
   eq nonce1(enc2(K,N1,N2,P)) = N1 .
   eq nonce2(enc2(K,N1,N2,P)) = N2 .
@@ -100,11 +100,11 @@ mod! CIPHER2 {
 mod! CIPHER3 {
   pr(PRINCIPAL + NONCE)
   [Cipher3]
-  op enc3 : Principal Nonce -> Cipher3
-  op key : Cipher3 -> Principal
+  op enc3 : Prin Nonce -> Cipher3
+  op key : Cipher3 -> Prin
   op nonce : Cipher3 -> Nonce
   vars E31 E32 : Cipher3
-  vars K K' : Principal
+  vars K K' : Prin
   vars N N' : Nonce
   eq key(enc3(K,N)) = K .
   eq nonce(enc3(K,N)) = N .
@@ -124,23 +124,23 @@ mod! MESSAGE {
   [Message]
   --      creator   sender    receiver
   --    --------------------------------------------------
-  op m1 : Principal Principal Principal Cipher1 -> Message
-  op m2 : Principal Principal Principal Cipher2 -> Message
-  op m3 : Principal Principal Principal Cipher3 -> Message
+  op m1 : Prin Prin Prin Cipher1 -> Message
+  op m2 : Prin Prin Prin Cipher2 -> Message
+  op m3 : Prin Prin Prin Cipher3 -> Message
   --
   op m1? : Message -> Bool
   op m2? : Message -> Bool
   op m3? : Message -> Bool
   --
-  op creator : Message -> Principal
-  op sender : Message -> Principal
-  op receiver : Message -> Principal
+  op creator : Message -> Prin
+  op sender : Message -> Prin
+  op receiver : Message -> Prin
   op cipher1 : Message -> Cipher1
   op cipher2 : Message -> Cipher2
   op cipher3 : Message -> Cipher3
   --
   vars M M1 M2 : Message
-  vars C S R C' S' R' : Principal
+  vars C S R C' S' R' : Prin
   vars E1 E1' : Cipher1
   vars E2 E2' : Cipher2
   vars E3 E3' : Cipher3
@@ -194,8 +194,6 @@ mod! BAG (D :: TRIV) {
   var B : Bag
   vars E1 E2 : Elt.D
   eq E1 \in void = false .
-  -- ceq E1 \in (E2,B) = true if E1 = E2 .
-  -- ceq E1 \in (E2,B) = E1 \in B if not(E1 = E2) .
   eq E1 \in E2 = (E1 = E2) .
   eq E1 \in (E2,B) = (E1 = E2) or (E1 \in B) .
 }
@@ -208,8 +206,6 @@ mod! SET (D :: TRIV) {
   var S : Set
   vars E1 E2 : Elt.D
   eq E1 \in empty = false .
-  -- ceq E1 \in (E2 S) = true if E1 = E2 .
-  -- ceq E1 \in (E2 S) = E1 \in S if not(E1 = E2) .
   eq E1 \in E2 = (E1 = E2) .
   eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
 }
@@ -217,18 +213,6 @@ mod! SET (D :: TRIV) {
 mod! COLLECTION(D :: TRIV) {
   [Elt.D < Collection]
   op _\in_ : Elt.D Collection -> Bool
-
-  -- var S : Collection 
-  -- vars E1 E2 : Elt.D
-
-  -- eq E1 \in E2 = (E1 = E2) .
-  -- eq E1 \in (E2 S) = (E1 = E2) or (E1 \in S) .
-
--- -- lemma, add by @duongtd 21/01/28
-  op lm1 : Elt.D Elt.D Collection -> Bool
-  vars E1 E2 : Elt.D
-  var C : Collection
-  eq lm1(E1, E2, C) = (E1 = E2 and E1 \in C implies E2 \in C) .
 }
 
 view TRIV2MSG from TRIV to MESSAGE {
@@ -247,7 +231,7 @@ view TRIV2CIPHER3 from TRIV to CIPHER3 {
   sort Elt -> Cipher3
 }
 view TRIV2RAND from TRIV to RANDOM {
-  sort Elt -> Random
+  sort Elt -> Rand
 }
 
 --
@@ -274,7 +258,7 @@ mod! NETWORK {
   var E1 : Cipher1
   var E2 : Cipher2
   var E3 : Cipher3
-  vars K P Q Q1 : Principal
+  vars K P Q Q1 : Prin
   --
   -- cnonce : the collection of nonces gleaned by the intruder.
   -- If a nonce is created by the intruder, the nonce is available to the intruder.
@@ -297,15 +281,12 @@ mod! NETWORK {
          not(m2?(M) and key(cipher2(M)) = intruder and nonce2(cipher2(M)) = N) and
          not(m3?(M) and key(cipher3(M)) = intruder and nonce(cipher3(M)) = N) .
   
--- lemmas, updated by @duongtd 21/02/03
-  -- op lm2 : Nonce Message Network -> Bool .
-  -- eq lm2(N,M,NW) = (N \in cnonce(M) and M \in NW) implies N \in cnonce(NW) .
   ceq nonce2(cipher2(M)) \in cnonce(NW) = true
-    if m2?(M) and key(cipher2(M)) = intruder and M \in NW .
+      if m2?(M) and key(cipher2(M)) = intruder and M \in NW .
   ceq nonce(cipher1(M)) \in cnonce(NW) = true
-    if m1?(M) and key(cipher1(M)) = intruder and M \in NW .
-  ceq n(sender(M),P,R:Random) \in cnonce(NW) = true
-    if m2?(M) and key(cipher2(M)) = intruder and M \in NW and n(sender(M),P,R:Random) = nonce2(cipher2(M)) .
+      if m1?(M) and key(cipher1(M)) = intruder and M \in NW .
+  ceq n(sender(M),P,R:Rand) \in cnonce(NW) = true
+      if m2?(M) and key(cipher2(M)) = intruder and M \in NW and n(sender(M),P,R:Rand) = nonce2(cipher2(M)) .
   
   --
   -- cenc1 : the collection of cipher1's gleaned by the intruder.
@@ -318,13 +299,10 @@ mod! NETWORK {
   ceq E1 \in cenc1(M,NW) = E1 \in cenc1(NW)
       if not(m1?(M) and not(key(cipher1(M)) = intruder) and E1 = cipher1(M)) .
 
--- lemma, updated by @duongtd 21/02/03
-  -- op lm3 : Cipher1 Message Network -> Bool .
-  -- eq lm3(E1,M,NW) = (E1 \in cenc1(M) and M \in NW) implies E1 \in cenc1(NW) .
   ceq cipher1(M) \in cenc1(NW) = true
-    if m1?(M) and not(key(cipher1(M)) = intruder) and M \in NW .
+      if m1?(M) and not(key(cipher1(M)) = intruder) and M \in NW .
   ceq enc1(K,nonce(E1),P) \in cenc1(NW) = E1 \in cenc1(NW)
-    if K = key(E1) and P = principal(E1)  . 
+      if K = key(E1) and P = principal(E1)  . 
 
   --
   -- cenc2 : the collection of cipher2's gleaned by the intruder.
@@ -337,13 +315,10 @@ mod! NETWORK {
   ceq E2 \in cenc2(M,NW) = E2 \in cenc2(NW)
       if not(m2?(M) and not(key(cipher2(M)) = intruder) and E2 = cipher2(M)) .
   
--- lemma, updated by @duongtd 21/02/03
-  -- op lm4 : Cipher2 Message Network -> Bool .
-  -- eq lm4(E2,M,NW) = (E2 \in cenc2(M) and M \in NW) implies E2 \in cenc2(NW) .
   ceq cipher2(M) \in cenc2(NW) = true
-    if m2?(M) and not(key(cipher2(M)) = intruder) and M \in NW .
+      if m2?(M) and not(key(cipher2(M)) = intruder) and M \in NW .
   ceq m2(Q1,Q,P,E2) \in NW = false 
-    if E2 \in cenc2(NW) = false and not(key(E2) = intruder) .
+      if E2 \in cenc2(NW) = false and not(key(E2) = intruder) .
 
   --
   -- cenc3 : the collection of cipher3's gleaned by the intruder.
@@ -357,20 +332,20 @@ mod! NETWORK {
       if not(m3?(M) and not(key(cipher3(M)) = intruder) and E3 = cipher3(M)) .
     
   ceq cipher3(M) \in cenc3(NW) = true
-    if m3?(M) and not(key(cipher3(M)) = intruder) and M \in NW .
+      if m3?(M) and not(key(cipher3(M)) = intruder) and M \in NW .
   
   ceq m3(Q1,P,Q,E3) \in NW = false 
-    if E3 \in cenc3(NW) = false and not(key(E3) = intruder) .
+      if E3 \in cenc3(NW) = false and not(key(E3) = intruder) .
 
   ceq m1(creator(M), creator(M), P, enc1(P,N:Nonce,creator(M))) \in NW = true
-    if M \in NW and m1?(M) and receiver(M) = P and
+      if M \in NW and m1?(M) and receiver(M) = P and
       N:Nonce = nonce(cipher1(M)) .
   ceq m2(creator(M), P, Q, enc2(Q,N1:Nonce,N2:Nonce,P)) \in NW = true
-    if M \in NW and m2?(M) and sender(M) = P and receiver(M) = Q and
+      if M \in NW and m2?(M) and sender(M) = P and receiver(M) = Q and
       N1:Nonce = nonce1(cipher2(M)) and N2:Nonce = nonce2(cipher2(M)) .
 
   ceq enc2(P,N1:Nonce,nonce2(cipher2(M)),Q) \in cenc2(NW) = true
-    if m2?(M) and sender(M) = Q and receiver(M) = P and
+      if m2?(M) and sender(M) = Q and receiver(M) = P and
     N1:Nonce = nonce1(cipher2(M)) and cipher2(M) \in cenc2(NW) .
 
 }
@@ -378,7 +353,6 @@ mod! NETWORK {
 mod* NSLPK {
   pr(NETWORK)
   pr(SET(D <= TRIV2RAND)*{sort Set -> URand})
-  -- pr(SET(RAND)*{sort Set -> URand})
   [System]
 -- any initial state
   op init : -> System {constr}
@@ -387,21 +361,21 @@ mod* NSLPK {
   op nw : System -> Network
 -- actions
   -- sending messages according to the protocol
-  op sdm1 : System Principal Principal Random        -> System {constr}
-  op sdm2 : System Principal Random Message          -> System {constr}
-  op sdm3 : System Principal Random Message Message  -> System {constr}
+  op sdm1 : System Prin Prin Rand        -> System {constr}
+  op sdm2 : System Prin Rand Message          -> System {constr}
+  op sdm3 : System Prin Rand Message Message  -> System {constr}
   -- faking messages based on the gleaned info
-  op fkm11 : System Principal Principal Cipher1     -> System {constr}
-  op fkm12 : System Principal Principal Nonce       -> System {constr}
-  op fkm21 : System Principal Principal Cipher2     -> System {constr}
-  op fkm22 : System Principal Principal Nonce Nonce -> System {constr}
-  op fkm31 : System Principal Principal Cipher3     -> System {constr}
-  op fkm32 : System Principal Principal Nonce       -> System {constr}
+  op fkm11 : System Prin Prin Cipher1     -> System {constr}
+  op fkm12 : System Prin Prin Nonce       -> System {constr}
+  op fkm21 : System Prin Prin Cipher2     -> System {constr}
+  op fkm22 : System Prin Prin Nonce Nonce -> System {constr}
+  op fkm31 : System Prin Prin Cipher3     -> System {constr}
+  op fkm32 : System Prin Prin Nonce       -> System {constr}
 -- CafeOBJ variables
   var S : System
   vars M M1 M2 : Message
-  vars P Q : Principal
-  var R : Random
+  vars P Q : Prin
+  var R : Rand
   vars N N1 N2 : Nonce
   var E1 : Cipher1
   var E2 : Cipher2
@@ -410,7 +384,7 @@ mod* NSLPK {
   eq ur(init) = empty .
   eq nw(init) = void .
 -- for sdm1
-  op c-sdm1 : System Principal Principal Random -> Bool
+  op c-sdm1 : System Prin Prin Rand -> Bool
   eq c-sdm1(S,P,Q,R) = not (R \in ur(S)) .
   -- 
   ceq ur(sdm1(S,P,Q,R)) = R ur(S) if c-sdm1(S,P,Q,R) .
@@ -418,7 +392,7 @@ mod* NSLPK {
   ceq sdm1(S,P,Q,R)     = S if not c-sdm1(S,P,Q,R) .
 
 -- for sdm2
-  op c-sdm2 : System Principal Random Message -> Bool
+  op c-sdm2 : System Prin Rand Message -> Bool
   --
   -- The effective condition means that there exists message1 M that seems to be
   -- sent bt P denoted by sender(M) and random number R is really fresh.
@@ -434,7 +408,7 @@ mod* NSLPK {
   ceq sdm2(S,Q,R,M)     = S if not c-sdm2(S,Q,R,M) .
 
 -- for sdm3
-  op c-sdm3 : System Principal Random Message Message -> Bool -- {strat: (0 1 2 3 4 5)}
+  op c-sdm3 : System Prin Rand Message Message -> Bool -- {strat: (0 1 2 3 4 5)}
   --
   -- The effective condition means that principal P has sent message1 M1 to Q denoted
   -- by receiver(M1) and there exits message1 M2 that seems to be sent by Q to P in
@@ -454,28 +428,28 @@ mod* NSLPK {
       if c-sdm3(S,P,R,M1,M2) .
   ceq sdm3(S,P,R,M1,M2)     = S if not c-sdm3(S,P,R,M1,M2) .
 -- for fkm11
-  op c-fkm11 : System Principal Principal Cipher1 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm11 : System Prin Prin Cipher1 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm11(S,P,Q,E1) = E1 \in cenc1(nw(S)) .
   --
   eq  ur(fkm11(S,P,Q,E1)) = ur(S) .
   ceq nw(fkm11(S,P,Q,E1)) = m1(intruder,P,Q,E1) , nw(S) if c-fkm11(S,P,Q,E1) .
   ceq fkm11(S,P,Q,E1)     = S if not c-fkm11(S,P,Q,E1) .
 -- for fkm12
-  op c-fkm12 : System Principal Principal Nonce -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm12 : System Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm12(S,P,Q,N) = N \in cnonce(nw(S)) .
   --
   eq  ur(fkm12(S,P,Q,N)) = ur(S) .
   ceq nw(fkm12(S,P,Q,N)) = m1(intruder,P,Q,enc1(Q,N,P)) , nw(S) if c-fkm12(S,P,Q,N) .
   ceq fkm12(S,P,Q,N)     = S if not c-fkm12(S,P,Q,N) .
 -- for fkm21
-  op c-fkm21 : System Principal Principal Cipher2 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm21 : System Prin Prin Cipher2 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm21(S,P,Q,E2) = E2 \in cenc2(nw(S)) .
   --
   eq  ur(fkm21(S,P,Q,E2)) = ur(S) .
   ceq nw(fkm21(S,P,Q,E2)) = m2(intruder,P,Q,E2) , nw(S) if c-fkm21(S,P,Q,E2) .
   ceq fkm21(S,P,Q,E2)     = S if not c-fkm21(S,P,Q,E2) .
 -- for fkm22
-  op c-fkm22 : System Principal Principal Nonce Nonce -> Bool -- {strat: (0 1 2 3 4 5)}
+  op c-fkm22 : System Prin Prin Nonce Nonce -> Bool -- {strat: (0 1 2 3 4 5)}
   eq c-fkm22(S,P,Q,N1,N2) = N1 \in cnonce(nw(S)) and N2 \in cnonce(nw(S)) .
   --
   eq  ur(fkm22(S,P,Q,N1,N2)) = ur(S) .
@@ -483,14 +457,14 @@ mod* NSLPK {
       if c-fkm22(S,P,Q,N1,N2) .
   ceq fkm22(S,P,Q,N1,N2)     = S if not c-fkm22(S,P,Q,N1,N2) .
 -- for fkm31
-  op c-fkm31 : System Principal Principal Cipher3 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm31 : System Prin Prin Cipher3 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm31(S,P,Q,E3) = E3 \in cenc3(nw(S)) .
   --
   eq  ur(fkm31(S,P,Q,E3)) = ur(S) .
   ceq nw(fkm31(S,P,Q,E3)) = m3(intruder,P,Q,E3) , nw(S) if c-fkm31(S,P,Q,E3) .
   ceq fkm31(S,P,Q,E3)     = S if not c-fkm31(S,P,Q,E3) .
 -- for fkm32
-  op c-fkm32 : System Principal Principal Nonce -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm32 : System Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm32(S,P,Q,N) = N \in cnonce(nw(S)) .
   --
   eq  ur(fkm32(S,P,Q,N)) = ur(S) .
@@ -499,14 +473,7 @@ mod* NSLPK {
 }
 
 mod INV {
-  pr(NSLPK)
--- arbitrary objects
-  op e1 : -> Cipher1 
-  op e2 : -> Cipher2 
-  op e3 : -> Cipher3 
-  -- op r : -> Random
-  -- ops n1 n2 : -> Nonce
-  -- ops p q p1 q1 : -> Principal
+  pr(NSLPK) 
 -- declare invariants to prove
   op inv100 : System Cipher1 -> Bool
   op inv110 : System Cipher2 -> Bool
@@ -515,24 +482,24 @@ mod INV {
   op inv140 : System Cipher1 -> Bool
   op inv150 : System Cipher2 -> Bool
   op inv160 : System Nonce -> Bool
-  op inv170 : System Principal Principal Principal Random Nonce -> Bool
-  op inv180 : System Principal Principal Principal Random Nonce -> Bool
-  op inv190 : System Principal Principal Random Nonce -> Bool
-  op inv200 : System Principal Principal Random -> Bool
-  op inv210 : System Principal Principal Random -> Bool
-  op inv220 : System Principal Principal Random Nonce -> Bool
-  op inv230 : System Principal Principal Random -> Bool
-  op inv240 : System Principal Principal Random -> Bool
-  op inv250 : System Principal Principal Principal Random Nonce -> Bool
-  op inv260 : System Principal Principal Nonce Nonce -> Bool
+  op inv170 : System Prin Prin Prin Rand Nonce -> Bool
+  op inv180 : System Prin Prin Prin Rand Nonce -> Bool
+  op inv190 : System Prin Prin Rand Nonce -> Bool
+  op inv200 : System Prin Prin Rand -> Bool
+  op inv210 : System Prin Prin Rand -> Bool
+  op inv220 : System Prin Prin Rand Nonce -> Bool
+  op inv230 : System Prin Prin Rand -> Bool
+  op inv240 : System Prin Prin Rand -> Bool
+  op inv250 : System Prin Prin Prin Rand Nonce -> Bool
+  op inv260 : System Prin Prin Nonce Nonce -> Bool
 -- CafeOBJ variables
   var S : System
   var E1 : Cipher1
   var E2 : Cipher2
   var E3 : Cipher3
-  var R : Random
+  var R : Rand
   vars N N1 N2 : Nonce
-  vars P Q P1 Q1 : Principal
+  vars P Q P1 Q1 : Prin
 -- define invariants to prove
   eq inv100(S,E1) = (E1 \in cenc1(nw(S)) implies not(key(E1) = intruder)) .
   eq inv110(S,E2) = (E2 \in cenc2(nw(S)) implies not(key(E2) = intruder)) .
