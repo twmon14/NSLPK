@@ -1,15 +1,15 @@
 open INV .
 	:goal{
-		eq [inv14 :nonexec] : inv140(S:System,C:Cipher1) = true .
+		eq [inv14 :nonexec] : inv140(S:Sys,C:Cipher1) = true .
 	}
 
-	:ind on (S:System)
+	:ind on (S:Sys)
 
 	:apply(si)
 -- fkm11
 	:apply(tc)
 
-	:def csb1 = :ctf [C#Cipher1 \in cenc1(nw(S#System)) .]
+	:def csb1 = :ctf [C#Cipher1 \in cenc1(nw(S#Sys)) .]
 
 	:apply(csb1)
 
@@ -39,19 +39,19 @@ open INV .
 -- fkm12
 	:apply(tc)
 
-	:def csb4 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
+	:def csb4 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
 
 	:apply(csb4)
 
-	:def csb5 = :ctf {eq C@Cipher1  = enc1(P0#Principal,N#Nonce,P#Principal) .}
+	:def csb5 = :ctf {eq C@Cipher1  = enc1(P0#Prin,N#Nonce,P#Prin) .}
 
 	:apply(csb5)
 
-	:def csb6 = :ctf {eq P#Principal  = intruder .}
+	:def csb6 = :ctf {eq P#Prin  = intruder .}
 
 	:apply(csb6)
 
-	:def csb7 = :ctf {eq P0#Principal  = intruder .}
+	:def csb7 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb7)
 
@@ -67,7 +67,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb8 = :ctf {eq P0#Principal  = intruder .}
+	:def csb8 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb8)
 
@@ -93,7 +93,7 @@ open INV .
 -- fkm21
 	:apply(tc)
 
-	:def csb10 = :ctf [C#Cipher2 \in cenc2(nw(S#System)) .]
+	:def csb10 = :ctf [C#Cipher2 \in cenc2(nw(S#Sys)) .]
 
 	:apply(csb10)
 
@@ -115,15 +115,15 @@ open INV .
 -- fkm22
 	:apply(tc)
 
-	:def csb12 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
+	:def csb12 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
 
 	:apply(csb12)
 
-	:def csb13 = :ctf [N0#Nonce \in cnonce(nw(S#System)) .]
+	:def csb13 = :ctf [N0#Nonce \in cnonce(nw(S#Sys)) .]
 
 	:apply(csb13)
 
-	:def csb14 = :ctf {eq P0#Principal  = intruder .}
+	:def csb14 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb14)
 
@@ -161,7 +161,7 @@ open INV .
 -- fkm31
 	:apply(tc)
 
-	:def csb17 = :ctf [C#Cipher3 \in cenc3(nw(S#System)) .]
+	:def csb17 = :ctf [C#Cipher3 \in cenc3(nw(S#Sys)) .]
 
 	:apply(csb17)
 
@@ -183,11 +183,11 @@ open INV .
 -- fkm32
 	:apply(tc)
 
-	:def csb19 = :ctf [N#Nonce \in cnonce(nw(S#System)) .]
+	:def csb19 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
 
 	:apply(csb19)
 
-	:def csb20 = :ctf {eq P0#Principal  = intruder .}
+	:def csb20 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb20)
 
@@ -217,7 +217,7 @@ open INV .
 -- sdm1
 	:apply(tc)
 
-	:def csb22 = :ctf [R#Random \in ur(S#System) .]
+	:def csb22 = :ctf [R#Rand \in ur(S#Sys) .]
 
 	:apply(csb22)
 
@@ -225,11 +225,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb23 = :ctf {eq C@Cipher1  = enc1(P0#Principal,n(P#Principal,P0#Principal,R#Random),P#Principal) .}
+	:def csb23 = :ctf {eq C@Cipher1  = enc1(P0#Prin,n(P#Prin,P0#Prin,R#Rand),P#Prin) .}
 
 	:apply(csb23)
 
-	:def csb24 = :ctf {eq P0#Principal  = intruder .}
+	:def csb24 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb24)
 
@@ -237,11 +237,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb25 = :ctf {eq P#Principal  = intruder .}
+	:def csb25 = :ctf {eq P#Prin  = intruder .}
 
 	:apply(csb25)
 
-	:def csb26 = :ctf [n(intruder,P0#Principal,R#Random)\in cnonce(nw(S#System)) .]
+	:def csb26 = :ctf [n(intruder,P0#Prin,R#Rand)\in cnonce(nw(S#Sys)) .]
 
 	:apply(csb26)
 
@@ -257,11 +257,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb27 = :ctf {eq P0#Principal  = intruder .}
+	:def csb27 = :ctf {eq P0#Prin  = intruder .}
 
 	:apply(csb27)
 
-	:def csb28 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random) .}
+	:def csb28 = :ctf {eq nonce(C@Cipher1) = n(P#Prin,intruder,R#Rand) .}
 
 	:apply(csb28)
 
@@ -279,27 +279,27 @@ open INV .
 -- sdm2
 	:apply(tc)
 
-	:def csb29 = :ctf [M#Message \in nw(S#System) .]
+	:def csb29 = :ctf [M#Msg \in nw(S#Sys) .]
 
 	:apply(csb29)
 
-	:def csb30 = :ctf [m1?(M#Message) .]
+	:def csb30 = :ctf [m1?(M#Msg) .]
 
 	:apply(csb30)
 
-	:def csb31 = :ctf {eq receiver(M#Message) = P#Principal .}
+	:def csb31 = :ctf {eq receiver(M#Msg) = P#Prin .}
 
 	:apply(csb31)
 
-	:def csb32 = :ctf {eq key(cipher1(M#Message)) = P#Principal .}
+	:def csb32 = :ctf {eq key(cipher1(M#Msg)) = P#Prin .}
 
 	:apply(csb32)
 
-	:def csb33 = :ctf {eq principal(cipher1(M#Message)) = sender(M#Message) .}
+	:def csb33 = :ctf {eq principal(cipher1(M#Msg)) = sender(M#Msg) .}
 
 	:apply(csb33)
 
-	:def csb34 = :ctf [R#Random \in ur(S#System) .]
+	:def csb34 = :ctf [R#Rand \in ur(S#Sys) .]
 
 	:apply(csb34)
 
@@ -307,11 +307,11 @@ open INV .
 
 	:apply (rd)
 
-	:def csb35 = :ctf {eq sender(M#Message) = intruder .}
+	:def csb35 = :ctf {eq sender(M#Msg) = intruder .}
 
 	:apply(csb35)
 
-	:def csb36 = :ctf {eq nonce(C@Cipher1) = n(P#Principal,intruder,R#Random) .}
+	:def csb36 = :ctf {eq nonce(C@Cipher1) = n(P#Prin,intruder,R#Rand) .}
 
 	:apply(csb36)
 
@@ -319,7 +319,7 @@ open INV .
 
 	:apply (rd)
 
-	:def csb37 = :ctf {eq nonce(C@Cipher1) = nonce(cipher1(M#Message)) .}
+	:def csb37 = :ctf {eq nonce(C@Cipher1) = nonce(cipher1(M#Msg)) .}
 
 	:apply(csb37)
 
@@ -357,67 +357,67 @@ open INV .
 -- sdm3
 	:apply(tc)
 
-	:def csb38 = :ctf [M#Message \in nw(S#System) .]
+	:def csb38 = :ctf [M#Msg \in nw(S#Sys) .]
 
 	:apply(csb38)
 
-	:def csb39 = :ctf [M0#Message \in nw(S#System) .]
+	:def csb39 = :ctf [M0#Msg \in nw(S#Sys) .]
 
 	:apply(csb39)
 
-	:def csb40 = :ctf [m1?(M#Message) .]
+	:def csb40 = :ctf [m1?(M#Msg) .]
 
 	:apply(csb40)
 
-	:def csb41 = :ctf [m2?(M0#Message) .]
+	:def csb41 = :ctf [m2?(M0#Msg) .]
 
 	:apply(csb41)
 
-	:def csb42 = :ctf {eq creator(M#Message) = P#Principal .}
+	:def csb42 = :ctf {eq creator(M#Msg) = P#Prin .}
 
 	:apply(csb42)
 
-	:def csb43 = :ctf {eq sender(M#Message) = P#Principal .}
+	:def csb43 = :ctf {eq sender(M#Msg) = P#Prin .}
 
 	:apply(csb43)
 
-	:def csb44 = :ctf {eq receiver(M#Message) = sender(M0#Message) .}
+	:def csb44 = :ctf {eq receiver(M#Msg) = sender(M0#Msg) .}
 
 	:apply(csb44)
 
-	:def csb45 = :ctf {eq key(cipher1(M#Message)) = sender(M0#Message) .}
+	:def csb45 = :ctf {eq key(cipher1(M#Msg)) = sender(M0#Msg) .}
 
 	:apply(csb45)
 
-	:def csb46 = :ctf {eq nonce(cipher1(M#Message)) = n(P#Principal,sender(M0#Message),R#Random) .}
+	:def csb46 = :ctf {eq nonce(cipher1(M#Msg)) = n(P#Prin,sender(M0#Msg),R#Rand) .}
 
 	:apply(csb46)
 
-	:def csb47 = :ctf {eq principal(cipher1(M#Message)) = P#Principal .}
+	:def csb47 = :ctf {eq principal(cipher1(M#Msg)) = P#Prin .}
 
 	:apply(csb47)
 
-	:def csb48 = :ctf {eq receiver(M0#Message) = P#Principal .}
+	:def csb48 = :ctf {eq receiver(M0#Msg) = P#Prin .}
 
 	:apply(csb48)
 
-	:def csb49 = :ctf {eq key(cipher2(M0#Message)) = P#Principal .}
+	:def csb49 = :ctf {eq key(cipher2(M0#Msg)) = P#Prin .}
 
 	:apply(csb49)
 
-	:def csb50 = :ctf {eq nonce1(cipher2(M0#Message)) = n(P#Principal,sender(M0#Message),R#Random) .}
+	:def csb50 = :ctf {eq nonce1(cipher2(M0#Msg)) = n(P#Prin,sender(M0#Msg),R#Rand) .}
 
 	:apply(csb50)
 
-	:def csb51 = :ctf {eq principal(cipher2(M0#Message)) = sender(M0#Message) .}
+	:def csb51 = :ctf {eq principal(cipher2(M0#Msg)) = sender(M0#Msg) .}
 
 	:apply(csb51)
 
-	:def csb52 = :ctf {eq sender(M0#Message) = intruder .}
+	:def csb52 = :ctf {eq sender(M0#Msg) = intruder .}
 
 	:apply(csb52)
 
-	:def csb53 = :ctf {eq nonce(C@Cipher1) = nonce2(cipher2(M0#Message)) .}
+	:def csb53 = :ctf {eq nonce(C@Cipher1) = nonce2(cipher2(M0#Msg)) .}
 
 	:apply(csb53)
 
