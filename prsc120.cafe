@@ -14,7 +14,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = true .
 	red inv120(s,c) implies inv120(fkm11(s,r1,r2,r3),c) .
 close
@@ -25,7 +25,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm11(s,r1,r2,r3),c) .
 close
@@ -37,7 +37,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	red inv120(s,c) implies inv120(fkm12(s,r1,r2,r3),c) .
 close
@@ -48,7 +48,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm12(s,r1,r2,r3),c) .
 close
@@ -60,7 +60,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = true .
 	red inv120(s,c) implies inv120(fkm21(s,r1,r2,r3),c) .
 close
@@ -71,7 +71,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm21(s,r1,r2,r3),c) .
 close
@@ -84,7 +84,7 @@ open INV .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
 	red inv120(s,c) implies inv120(fkm22(s,r1,r2,r3,r4),c) .
@@ -97,7 +97,7 @@ open INV .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm22(s,r1,r2,r3,r4),c) .
@@ -110,7 +110,7 @@ open INV .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm22(s,r1,r2,r3,r4),c) .
 close
@@ -122,7 +122,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = true .
  	eq c = r3 .
 	red inv120(s,c) implies inv120(fkm31(s,r1,r2,r3),c) .
@@ -134,7 +134,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = true .
     eq (c = r3) = false .
 	red inv120(s,c) implies inv120(fkm31(s,r1,r2,r3),c) .
@@ -146,7 +146,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm31(s,r1,r2,r3),c) .
 close
@@ -158,7 +158,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq c = enc3(r2,r3) .
   	eq r2 = intruder .
@@ -171,7 +171,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq c = enc3(r2,r3) .
     eq (r2 = intruder) = false .
@@ -184,7 +184,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (c = enc3(r2,r3)) = false .
 	red inv120(s,c) implies inv120(fkm32(s,r1,r2,r3),c) .
@@ -196,7 +196,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv120(s,c) implies inv120(fkm32(s,r1,r2,r3),c) .
 close
@@ -208,7 +208,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Rand .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = true .
 	red inv120(s,c) implies inv120(sdm1(s,r1,r2,r3),c) .
 close
@@ -219,7 +219,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Rand .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
 	red inv120(s,c) implies inv120(sdm1(s,r1,r2,r3),c) .
 close
@@ -230,8 +230,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -246,8 +246,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -262,8 +262,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -277,8 +277,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -291,8 +291,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq (receiver(r3) = r1) = false .
@@ -304,8 +304,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = false .
 	red inv120(s,c) implies inv120(sdm2(s,r1,r2,r3),c) .
@@ -316,8 +316,8 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = false .
 	red inv120(s,c) implies inv120(sdm2(s,r1,r2,r3),c) .
 close
@@ -328,9 +328,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -356,9 +356,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -384,9 +384,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -411,9 +411,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -436,9 +436,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -460,9 +460,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -483,9 +483,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -505,9 +505,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -526,9 +526,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -546,9 +546,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -565,9 +565,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -583,9 +583,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -600,9 +600,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -616,9 +616,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -631,9 +631,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
@@ -645,9 +645,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
 	red inv120(s,c) implies inv120(sdm3(s,r1,r2,r3,r4),c) .
@@ -658,9 +658,9 @@ open INV .
 	op c : -> Cipher3 .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = false .
 	red inv120(s,c) implies inv120(sdm3(s,r1,r2,r3,r4),c) .
 close
