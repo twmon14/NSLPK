@@ -121,25 +121,25 @@ mod! CIPHER3 {
 --
 mod! MESSAGE {
   pr(PRINCIPAL + CIPHER1 + CIPHER2 + CIPHER3)
-  [Message]
+  [Msg]
   --      creator   sender    receiver
   --    --------------------------------------------------
-  op m1 : Prin Prin Prin Cipher1 -> Message
-  op m2 : Prin Prin Prin Cipher2 -> Message
-  op m3 : Prin Prin Prin Cipher3 -> Message
+  op m1 : Prin Prin Prin Cipher1 -> Msg
+  op m2 : Prin Prin Prin Cipher2 -> Msg
+  op m3 : Prin Prin Prin Cipher3 -> Msg
   --
-  op m1? : Message -> Bool
-  op m2? : Message -> Bool
-  op m3? : Message -> Bool
+  op m1? : Msg -> Bool
+  op m2? : Msg -> Bool
+  op m3? : Msg -> Bool
   --
-  op creator : Message -> Prin
-  op sender : Message -> Prin
-  op receiver : Message -> Prin
-  op cipher1 : Message -> Cipher1
-  op cipher2 : Message -> Cipher2
-  op cipher3 : Message -> Cipher3
+  op creator : Msg -> Prin
+  op sender : Msg -> Prin
+  op receiver : Msg -> Prin
+  op cipher1 : Msg -> Cipher1
+  op cipher2 : Msg -> Cipher2
+  op cipher3 : Msg -> Cipher3
   --
-  vars M M1 M2 : Message
+  vars M M1 M2 : Msg
   vars C S R C' S' R' : Prin
   vars E1 E1' : Cipher1
   vars E2 E2' : Cipher2
@@ -216,7 +216,7 @@ mod! COLLECTION(D :: TRIV) {
 }
 
 view TRIV2MSG from TRIV to MESSAGE {
-  sort Elt -> Message
+  sort Elt -> Msg
 }
 view TRIV2NONCE from TRIV to NONCE {
   sort Elt -> Nonce
@@ -253,7 +253,7 @@ mod! NETWORK {
   op cenc3 : Network -> ColCipher3
   --
   var NW : Network
-  var M : Message
+  var M : Msg
   vars N N' : Nonce
   var E1 : Cipher1
   var E2 : Cipher2
@@ -353,27 +353,27 @@ mod! NETWORK {
 mod* NSLPK {
   pr(NETWORK)
   pr(SET(D <= TRIV2RAND)*{sort Set -> URand})
-  [System]
+  [Sys]
 -- any initial state
-  op init : -> System {constr}
+  op init : -> Sys {constr}
 -- observations
-  op ur : System -> URand -- the set of used random numbers
-  op nw : System -> Network
+  op ur : Sys -> URand -- the set of used random numbers
+  op nw : Sys -> Network
 -- actions
   -- sending messages according to the protocol
-  op sdm1 : System Prin Prin Rand        -> System {constr}
-  op sdm2 : System Prin Rand Message          -> System {constr}
-  op sdm3 : System Prin Rand Message Message  -> System {constr}
+  op sdm1 : Sys Prin Prin Rand        -> Sys {constr}
+  op sdm2 : Sys Prin Rand Msg          -> Sys {constr}
+  op sdm3 : Sys Prin Rand Msg Msg  -> Sys {constr}
   -- faking messages based on the gleaned info
-  op fkm11 : System Prin Prin Cipher1     -> System {constr}
-  op fkm12 : System Prin Prin Nonce       -> System {constr}
-  op fkm21 : System Prin Prin Cipher2     -> System {constr}
-  op fkm22 : System Prin Prin Nonce Nonce -> System {constr}
-  op fkm31 : System Prin Prin Cipher3     -> System {constr}
-  op fkm32 : System Prin Prin Nonce       -> System {constr}
+  op fkm11 : Sys Prin Prin Cipher1     -> Sys {constr}
+  op fkm12 : Sys Prin Prin Nonce       -> Sys {constr}
+  op fkm21 : Sys Prin Prin Cipher2     -> Sys {constr}
+  op fkm22 : Sys Prin Prin Nonce Nonce -> Sys {constr}
+  op fkm31 : Sys Prin Prin Cipher3     -> Sys {constr}
+  op fkm32 : Sys Prin Prin Nonce       -> Sys {constr}
 -- CafeOBJ variables
-  var S : System
-  vars M M1 M2 : Message
+  var S : Sys
+  vars M M1 M2 : Msg
   vars P Q : Prin
   var R : Rand
   vars N N1 N2 : Nonce
@@ -384,7 +384,7 @@ mod* NSLPK {
   eq ur(init) = empty .
   eq nw(init) = void .
 -- for sdm1
-  op c-sdm1 : System Prin Prin Rand -> Bool
+  op c-sdm1 : Sys Prin Prin Rand -> Bool
   eq c-sdm1(S,P,Q,R) = not (R \in ur(S)) .
   -- 
   ceq ur(sdm1(S,P,Q,R)) = R ur(S) if c-sdm1(S,P,Q,R) .
@@ -392,7 +392,7 @@ mod* NSLPK {
   ceq sdm1(S,P,Q,R)     = S if not c-sdm1(S,P,Q,R) .
 
 -- for sdm2
-  op c-sdm2 : System Prin Rand Message -> Bool
+  op c-sdm2 : Sys Prin Rand Msg -> Bool
   --
   -- The effective condition means that there exists message1 M that seems to be
   -- sent bt P denoted by sender(M) and random number R is really fresh.
@@ -408,7 +408,7 @@ mod* NSLPK {
   ceq sdm2(S,Q,R,M)     = S if not c-sdm2(S,Q,R,M) .
 
 -- for sdm3
-  op c-sdm3 : System Prin Rand Message Message -> Bool -- {strat: (0 1 2 3 4 5)}
+  op c-sdm3 : Sys Prin Rand Msg Msg -> Bool -- {strat: (0 1 2 3 4 5)}
   --
   -- The effective condition means that principal P has sent message1 M1 to Q denoted
   -- by receiver(M1) and there exits message1 M2 that seems to be sent by Q to P in
@@ -428,28 +428,28 @@ mod* NSLPK {
       if c-sdm3(S,P,R,M1,M2) .
   ceq sdm3(S,P,R,M1,M2)     = S if not c-sdm3(S,P,R,M1,M2) .
 -- for fkm11
-  op c-fkm11 : System Prin Prin Cipher1 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm11 : Sys Prin Prin Cipher1 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm11(S,P,Q,E1) = E1 \in cenc1(nw(S)) .
   --
   eq  ur(fkm11(S,P,Q,E1)) = ur(S) .
   ceq nw(fkm11(S,P,Q,E1)) = m1(intruder,P,Q,E1) , nw(S) if c-fkm11(S,P,Q,E1) .
   ceq fkm11(S,P,Q,E1)     = S if not c-fkm11(S,P,Q,E1) .
 -- for fkm12
-  op c-fkm12 : System Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm12 : Sys Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm12(S,P,Q,N) = N \in cnonce(nw(S)) .
   --
   eq  ur(fkm12(S,P,Q,N)) = ur(S) .
   ceq nw(fkm12(S,P,Q,N)) = m1(intruder,P,Q,enc1(Q,N,P)) , nw(S) if c-fkm12(S,P,Q,N) .
   ceq fkm12(S,P,Q,N)     = S if not c-fkm12(S,P,Q,N) .
 -- for fkm21
-  op c-fkm21 : System Prin Prin Cipher2 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm21 : Sys Prin Prin Cipher2 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm21(S,P,Q,E2) = E2 \in cenc2(nw(S)) .
   --
   eq  ur(fkm21(S,P,Q,E2)) = ur(S) .
   ceq nw(fkm21(S,P,Q,E2)) = m2(intruder,P,Q,E2) , nw(S) if c-fkm21(S,P,Q,E2) .
   ceq fkm21(S,P,Q,E2)     = S if not c-fkm21(S,P,Q,E2) .
 -- for fkm22
-  op c-fkm22 : System Prin Prin Nonce Nonce -> Bool -- {strat: (0 1 2 3 4 5)}
+  op c-fkm22 : Sys Prin Prin Nonce Nonce -> Bool -- {strat: (0 1 2 3 4 5)}
   eq c-fkm22(S,P,Q,N1,N2) = N1 \in cnonce(nw(S)) and N2 \in cnonce(nw(S)) .
   --
   eq  ur(fkm22(S,P,Q,N1,N2)) = ur(S) .
@@ -457,14 +457,14 @@ mod* NSLPK {
       if c-fkm22(S,P,Q,N1,N2) .
   ceq fkm22(S,P,Q,N1,N2)     = S if not c-fkm22(S,P,Q,N1,N2) .
 -- for fkm31
-  op c-fkm31 : System Prin Prin Cipher3 -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm31 : Sys Prin Prin Cipher3 -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm31(S,P,Q,E3) = E3 \in cenc3(nw(S)) .
   --
   eq  ur(fkm31(S,P,Q,E3)) = ur(S) .
   ceq nw(fkm31(S,P,Q,E3)) = m3(intruder,P,Q,E3) , nw(S) if c-fkm31(S,P,Q,E3) .
   ceq fkm31(S,P,Q,E3)     = S if not c-fkm31(S,P,Q,E3) .
 -- for fkm32
-  op c-fkm32 : System Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
+  op c-fkm32 : Sys Prin Prin Nonce -> Bool -- {strat: (0 1 2 3 4)}
   eq c-fkm32(S,P,Q,N) = N \in cnonce(nw(S)) .
   --
   eq  ur(fkm32(S,P,Q,N)) = ur(S) .
@@ -475,25 +475,25 @@ mod* NSLPK {
 mod INV {
   pr(NSLPK) 
 -- declare invariants to prove
-  op inv100 : System Cipher1 -> Bool
-  op inv110 : System Cipher2 -> Bool
-  op inv120 : System Cipher3 -> Bool
-  op inv130 : System Nonce -> Bool
-  op inv140 : System Cipher1 -> Bool
-  op inv150 : System Cipher2 -> Bool
-  op inv160 : System Nonce -> Bool
-  op inv170 : System Prin Prin Prin Rand Nonce -> Bool
-  op inv180 : System Prin Prin Prin Rand Nonce -> Bool
-  op inv190 : System Prin Prin Rand Nonce -> Bool
-  op inv200 : System Prin Prin Rand -> Bool
-  op inv210 : System Prin Prin Rand -> Bool
-  op inv220 : System Prin Prin Rand Nonce -> Bool
-  op inv230 : System Prin Prin Rand -> Bool
-  op inv240 : System Prin Prin Rand -> Bool
-  op inv250 : System Prin Prin Prin Rand Nonce -> Bool
-  op inv260 : System Prin Prin Nonce Nonce -> Bool
+  op inv100 : Sys Cipher1 -> Bool
+  op inv110 : Sys Cipher2 -> Bool
+  op inv120 : Sys Cipher3 -> Bool
+  op inv130 : Sys Nonce -> Bool
+  op inv140 : Sys Cipher1 -> Bool
+  op inv150 : Sys Cipher2 -> Bool
+  op inv160 : Sys Nonce -> Bool
+  op inv170 : Sys Prin Prin Prin Rand Nonce -> Bool
+  op inv180 : Sys Prin Prin Prin Rand Nonce -> Bool
+  op inv190 : Sys Prin Prin Rand Nonce -> Bool
+  op inv200 : Sys Prin Prin Rand -> Bool
+  op inv210 : Sys Prin Prin Rand -> Bool
+  op inv220 : Sys Prin Prin Rand Nonce -> Bool
+  op inv230 : Sys Prin Prin Rand -> Bool
+  op inv240 : Sys Prin Prin Rand -> Bool
+  op inv250 : Sys Prin Prin Prin Rand Nonce -> Bool
+  op inv260 : Sys Prin Prin Nonce Nonce -> Bool
 -- CafeOBJ variables
-  var S : System
+  var S : Sys
   var E1 : Cipher1
   var E2 : Cipher2
   var E3 : Cipher3
