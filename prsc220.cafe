@@ -1,24 +1,27 @@
--- init
+--> I) Base case
+--> init
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-  red inv220(init,p,q,r,n) .
+  	red inv220(init,p,q,r,n) .
 close
 
--- fkm11(all true)
+--> II) Induction cases
+--> 1. fkm11(s,r1,r2,r3)
 open INV .
   :id(inv22)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+    op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = true .
     eq p = intruder .
 	red inv220(s,p,q,r,n) implies inv220(fkm11(s,r1,r2,r3),p,q,r,n) .
@@ -26,14 +29,14 @@ close
 
 open INV .
   :id(inv22)
-    op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+    op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = true .
     eq (p = intruder) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm11(s,r1,r2,r3),p,q,r,n) .
@@ -41,29 +44,29 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm11(s,r1,r2,r3),p,q,r,n) .
 close
 
--- fkm12(all true)
+--> 2. fkm12(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq p = intruder .
 	red inv220(s,p,q,r,n) implies inv220(fkm12(s,r1,r2,r3),p,q,r,n) .
@@ -71,14 +74,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm12(s,r1,r2,r3),p,q,r,n) .
@@ -86,29 +89,29 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm12(s,r1,r2,r3),p,q,r,n) .
 close
 
--- fkm21(all true)
+--> 3. fkm21(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq enc2(p,n(p,q,r),n,q) = r3 .
     eq p = intruder .
@@ -117,14 +120,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq enc2(p,n(p,q,r),n,q) = r3 .
     eq (p = intruder) = false .
@@ -133,14 +136,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = true .
     eq (enc2(p,n(p,q,r),n,q) = r3) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm21(s,r1,r2,r3),p,q,r,n) .
@@ -148,30 +151,30 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher2 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc2(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm21(s,r1,r2,r3),p,q,r,n) .
 close
 
--- fkm22(all true)
+--> 4. fkm22(s,r1,r2,r3,r4)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = true .
@@ -181,15 +184,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = true .
@@ -199,15 +202,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -223,15 +226,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -247,15 +250,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -270,15 +273,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -292,15 +295,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -313,15 +316,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -333,15 +336,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -352,15 +355,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
     eq (p = intruder) = false .
@@ -370,15 +373,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
@@ -386,102 +389,102 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
 	op r4 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
--- fkm31(all true)
+--> 5. fkm31(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = true .
 	red inv220(s,p,q,r,n) implies inv220(fkm31(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm31(s,r1,r2,r3),p,q,r,n) .
 close
 
--- fkm32(all true)
+--> 6. fkm32(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	red inv220(s,p,q,r,n) implies inv220(fkm32(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv220(s,p,q,r,n) implies inv220(fkm32(s,r1,r2,r3),p,q,r,n) .
 close
 
--- sdm1(all true)
+--> 7. sdm1(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = true .
 	red inv220(s,p,q,r,n) implies inv220(sdm1(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq p = intruder .
 	red inv220(s,p,q,r,n) implies inv220(sdm1(s,r1,r2,r3),p,q,r,n) .
@@ -489,14 +492,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq (p = intruder) = false .
     eq r = r3 .
@@ -508,14 +511,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq (p = intruder) = false .
     eq r = r3 .
@@ -527,14 +530,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq (p = intruder) = false .
     eq r = r3 .
@@ -545,14 +548,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq (p = intruder) = false .
     eq r = r3 .
@@ -562,166 +565,159 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Principal .
-	op r3 : -> Random .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Prin .
+	op r3 : -> Rand .
+	op s : -> Sys .
 	eq (r3 \in ur(s)) = false .
     eq (p = intruder) = false .
     eq (r = r3) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm1(s,r1,r2,r3),p,q,r,n) .
 close
 
--- sdm2(all true)
---> true
+--> 8. sdm2(s,r1,r2,r3)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = true .
-
-	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
-close
-
---> true
-open INV .
-  :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
-	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq nonce(cipher1(r3)) = n(p,q,r) .
-  eq p = sender(r3) .
-  eq n = n(r1,sender(r3),r2) .
-  eq q = r1 .
-
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = true .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq nonce(cipher1(r3)) = n(p,q,r) .
-  eq p = sender(r3) .
-  eq n = n(r1,sender(r3),r2) .
-  eq (q = r1) = false .
-
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = false .
+  	eq nonce(cipher1(r3)) = n(p,q,r) .
+  	eq p = sender(r3) .
+  	eq n = n(r1,sender(r3),r2) .
+  	eq q = r1 .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq nonce(cipher1(r3)) = n(p,q,r) .
-  eq p = sender(r3) .
-  eq (n = n(r1,sender(r3),r2)) = false .
-
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = false .
+  	eq nonce(cipher1(r3)) = n(p,q,r) .
+  	eq p = sender(r3) .
+  	eq n = n(r1,sender(r3),r2) .
+  	eq (q = r1) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq nonce(cipher1(r3)) = n(p,q,r) .
-  eq (p = sender(r3)) = false .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = false .
+  	eq nonce(cipher1(r3)) = n(p,q,r) .
+  	eq p = sender(r3) .
+  	eq (n = n(r1,sender(r3),r2)) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
-  eq r3 \in nw(s) = true .
-  eq m1?(r3) = true .
-  eq receiver(r3) = r1 .
-  eq key(cipher1(r3)) = r1 .
-  eq principal(cipher1(r3)) = sender(r3) .
-  eq r2 \in ur(s) = false .
-  eq (nonce(cipher1(r3)) = n(p,q,r)) = false .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = false .
+  	eq nonce(cipher1(r3)) = n(p,q,r) .
+  	eq (p = sender(r3)) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
--- true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
+  	eq r3 \in nw(s) = true .
+  	eq m1?(r3) = true .
+  	eq receiver(r3) = r1 .
+  	eq key(cipher1(r3)) = r1 .
+  	eq principal(cipher1(r3)) = sender(r3) .
+  	eq r2 \in ur(s) = false .
+  	eq (nonce(cipher1(r3)) = n(p,q,r)) = false .
+	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
+close
+
+open INV .
+  :id(inv22)
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
+	op n : -> Nonce .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -732,14 +728,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq receiver(r3) = r1 .
@@ -749,14 +745,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = true .
   	eq (receiver(r3) = r1) = false .
@@ -765,14 +761,14 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = true .
   	eq m1?(r3) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
@@ -780,31 +776,30 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op s : -> Sys .
   	eq r3 \in nw(s) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm2(s,r1,r2,r3),p,q,r,n) .
 close
 
--- sdm3(all true)
---> true
+--> 9. sdm3(s,r1,r2,r3,r4)
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -824,15 +819,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -852,15 +847,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -879,15 +874,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -905,15 +900,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -930,15 +925,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -954,15 +949,15 @@ close
 
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
     eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -975,18 +970,17 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -998,18 +992,17 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1020,18 +1013,17 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1041,18 +1033,17 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1061,18 +1052,17 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1080,53 +1070,50 @@ open INV .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
 
---> true
 open INV .
   :id(inv22)
-	op p : -> Principal .
-    op q : -> Principal .
-    op r : -> Random .
+	op p : -> Prin .
+    op q : -> Prin .
+    op r : -> Rand .
 	op n : -> Nonce .
-	op r1 : -> Principal .
-	op r2 : -> Random .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r1 : -> Prin .
+	op r2 : -> Rand .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
 	eq (r3 \in nw(s)) = false .
 	red inv220(s,p,q,r,n) implies inv220(sdm3(s,r1,r2,r3,r4),p,q,r,n) .
 close
