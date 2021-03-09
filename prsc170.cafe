@@ -22,7 +22,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = true .
   eq p = intruder .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
@@ -38,7 +38,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = true .
   eq (p = intruder) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
@@ -54,7 +54,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher1 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc1(nw(s))) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm11(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -70,7 +70,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
   eq p = intruder .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
@@ -86,7 +86,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
   eq (p = intruder) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
@@ -102,7 +102,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm12(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -118,7 +118,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq p = intruder .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
@@ -134,7 +134,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -152,7 +152,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -175,7 +175,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -198,7 +198,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -220,7 +220,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -241,7 +241,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -261,7 +261,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = true .
@@ -280,7 +280,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = true .
   eq (p = intruder) = false .
   eq m1(p,p,q,enc1(q,n(p,q,r),p)) \in nw(s) = false .
@@ -297,7 +297,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Cipher2 .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 \in cenc2(nw(s)) = false .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm21(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -314,7 +314,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 = n(p,q,r) .
   eq (n(p,q,r) \in cnonce(nw(s))) = true .
   eq (r4 \in cnonce(nw(s))) = true .
@@ -332,7 +332,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 = n(p,q,r) .
   eq (n(p,q,r) \in cnonce(nw(s))) = true .
   eq (r4 \in cnonce(nw(s))) = false .
@@ -350,7 +350,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq r3 = n(p,q,r) .
   eq (n(p,q,r) \in cnonce(nw(s))) = false .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm22(s,r1,r2,r3,r4),p,q,q1,r,n) .
@@ -367,7 +367,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 = n(p,q,r)) = false .
   eq (r3 \in cnonce(nw(s))) = true .
   eq (r4 \in cnonce(nw(s))) = true .
@@ -385,7 +385,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 = n(p,q,r)) = false .
   eq (r3 \in cnonce(nw(s))) = true .
   eq (r4 \in cnonce(nw(s))) = false .
@@ -403,7 +403,7 @@ open INV .
   op r2 : -> Prin .
   op r3 : -> Nonce .
   op r4 : -> Nonce .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 = n(p,q,r)) = false .
   eq (r3 \in cnonce(nw(s))) = false .
   red inv170(s,p,q,q1,r,n) implies inv170(fkm22(s,r1,r2,r3,r4),p,q,q1,r,n) .
@@ -420,7 +420,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = true .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm31(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -435,7 +435,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Cipher3 .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm31(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -451,7 +451,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm32(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -466,7 +466,7 @@ open INV .
 	op r1 : -> Prin .
 	op r2 : -> Prin .
 	op r3 : -> Nonce .
-	op s : -> System .
+	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(fkm32(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -482,7 +482,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = true .
   red inv170(s,p,q,q1,r,n) implies inv170(sdm1(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -497,7 +497,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq p = intruder .
   red inv170(s,p,q,q1,r,n) implies inv170(sdm1(s,r1,r2,r3),p,q,q1,r,n) .
@@ -513,7 +513,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq (p = intruder) = false .
   eq r = r3 .
@@ -533,7 +533,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq (p = intruder) = false .
   eq r = r3 .
@@ -553,7 +553,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq (p = intruder) = false .
   eq r = r3 .
@@ -572,7 +572,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq (p = intruder) = false .
   eq r = r3 .
@@ -590,7 +590,7 @@ open INV .
   op r1 : -> Prin .
   op r2 : -> Prin .
   op r3 : -> Rand .
-  op s : -> System .
+  op s : -> Sys .
   eq (r3 \in ur(s)) = false .
   eq (p = intruder) = false .
   eq (r = r3) = false .
@@ -607,8 +607,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -627,8 +627,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -647,8 +647,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -666,8 +666,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq receiver(r3) = r1 .
@@ -684,8 +684,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = true .
   eq (receiver(r3) = r1) = false .
@@ -701,8 +701,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = true .
   eq m1?(r3) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
@@ -717,8 +717,8 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op s : -> Sys .
   eq r3 \in nw(s) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm2(s,r1,r2,r3),p,q,q1,r,n) .
 close
@@ -733,9 +733,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -762,9 +762,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -791,9 +791,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -819,9 +819,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -846,9 +846,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -872,9 +872,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -897,9 +897,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -921,9 +921,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -944,9 +944,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -966,9 +966,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -987,9 +987,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1007,9 +1007,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = true .
@@ -1026,9 +1026,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = true .
 	eq m1?(r3) = false .
@@ -1044,9 +1044,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = true .
 	eq (r4 \in nw(s)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
@@ -1061,9 +1061,9 @@ open INV .
 	op n : -> Nonce .
 	op r1 : -> Prin .
 	op r2 : -> Rand .
-	op r3 : -> Message .
-	op r4 : -> Message .
-	op s : -> System .
+	op r3 : -> Msg .
+	op r4 : -> Msg .
+	op s : -> Sys .
   eq (r3 \in nw(s)) = false .
 	red inv170(s,p,q,q1,r,n) implies inv170(sdm3(s,r1,r2,r3,r4),p,q,q1,r,n) .
 close
