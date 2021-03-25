@@ -1,13 +1,12 @@
 open INV .
 	:goal{
-		eq [inv10 :nonexec] : inv100(S:Sys,C:Cipher1) = true .
+		eq [nslpk :nonexec] : inv100(S:Sys,C:Cipher1) = true .
 	}
 
 	:ind on (S:Sys)
 
 	:apply(si)
-	
--- fkm11
+
 	:apply(tc)
 
 	:def csb1 = :ctf [C#Cipher1 \in cenc1(nw(S#Sys)) .]
@@ -18,19 +17,20 @@ open INV .
 
 	:apply(csb2)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	*** The corresponding proof score was not present.
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
+	*** The corresponding proof score was not present.
 	:apply (rd)
 
--- fkm12
 	:apply(tc)
 
 	:def csb3 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
@@ -45,38 +45,36 @@ open INV .
 
 	:apply(csb5)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- fkm21
 	:apply(tc)
 
 	:def csb6 = :ctf [C#Cipher2 \in cenc2(nw(S#Sys)) .]
 
 	:apply(csb6)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- fkm22
 	:apply(tc)
 
 	:def csb7 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
@@ -87,64 +85,62 @@ open INV .
 
 	:apply(csb8)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
--- fkm31
+
 	:apply(tc)
 
 	:def csb9 = :ctf [C#Cipher3 \in cenc3(nw(S#Sys)) .]
 
 	:apply(csb9)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- fkm32
 	:apply(tc)
 
 	:def csb10 = :ctf [N#Nonce \in cnonce(nw(S#Sys)) .]
 
 	:apply(csb10)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- init
 	:apply(tc)
 
 	:apply (rd)
 
--- sdm1
 	:apply(tc)
 
 	:def csb11 = :ctf [R#Rand \in ur(S#Sys) .]
 
 	:apply(csb11)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:def csb12 = :ctf {eq C@Cipher1  = enc1(P0#Prin,n(P#Prin,P0#Prin,R#Rand),P#Prin) .}
+	:def csb12 = :ctf {eq C@Cipher1  = enc1(P0#Prin,n(P#Prin,P0#Prin,
+    R#Rand),P#Prin) .}
 
 	:apply(csb12)
 
@@ -152,19 +148,18 @@ open INV .
 
 	:apply(csb13)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- sdm2
 	:apply(tc)
 
 	:def csb14 = :ctf [M#Msg \in nw(S#Sys) .]
@@ -191,35 +186,34 @@ open INV .
 
 	:apply(csb19)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
--- sdm3
 	:apply(tc)
 
 	:def csb20 = :ctf [M#Msg \in nw(S#Sys) .]
@@ -254,7 +248,8 @@ open INV .
 
 	:apply(csb27)
 
-	:def csb28 = :ctf {eq nonce(cipher1(M#Msg)) = n(P#Prin,sender(M0#Msg),R#Rand) .}
+	:def csb28 = :ctf {eq nonce(cipher1(M#Msg)) = n(P#Prin,sender(M0#Msg),
+    R#Rand) .}
 
 	:apply(csb28)
 
@@ -270,7 +265,8 @@ open INV .
 
 	:apply(csb31)
 
-	:def csb32 = :ctf {eq nonce1(cipher2(M0#Msg)) = n(P#Prin,sender(M0#Msg),R#Rand) .}
+	:def csb32 = :ctf {eq nonce1(cipher2(M0#Msg)) = n(P#Prin,sender(
+    M0#Msg),R#Rand) .}
 
 	:apply(csb32)
 
@@ -278,64 +274,65 @@ open INV .
 
 	:apply(csb33)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
 
-	:imp [inv10] by {C:Cipher1 <- C@Cipher1 ;}
+	:imp [nslpk] by {C:Cipher1 <- C@Cipher1 ;}
 
 	:apply (rd)
+
 
 close
