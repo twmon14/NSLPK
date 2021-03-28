@@ -551,9 +551,21 @@ open INV .
 
 	:apply(csb54)
 
-	:postpone .
+    :def csb54_1 = :ctf {eq key(C#Cipher3) = intruder .}
+
+	:apply(csb54_1)
+
+    :imp [nslpk2] by {C:Cipher2 <- C@Cipher2 ;}
+
+	:imp [nslpk3] by {C:Cipher3 <- C#Cipher3 ;}
+
+	:apply (rd)
 
 	:imp [nslpk2] by {C:Cipher2 <- C@Cipher2 ;}
+
+	:apply (rd)
+
+    :imp [nslpk2] by {C:Cipher2 <- C@Cipher2 ;}
 
 	:apply (rd)
 
