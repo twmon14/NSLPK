@@ -305,7 +305,7 @@ open INV .
 	op r3 : -> Cipher3 .
 	op s : -> Sys .
 	eq (r3 \in cenc3(nw(s))) = true .
-    eq (key(r3) = intruder) = true .
+    eq key(r3) = intruder .
 	red inv120(s,r3) implies inv150(s,c) implies inv150(fkm31(s,r1,r2,r3),c) .
 close
 
