@@ -44,7 +44,6 @@ open INV .
 close
 
 --> 2. fkm12(s,r1,r2,r3)
-true
 open INV .
   :id(inv10)
 	op c : -> Cipher1 .

@@ -177,7 +177,7 @@ open INV .
 	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-    eq (p = intruder) = true .
+    eq p = intruder .
     eq r \in ur(s) = true .
   	red inv220(s,p,q,r,n) implies inv220(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
@@ -195,7 +195,7 @@ open INV .
 	op s : -> Sys .
 	eq (r3 \in cnonce(nw(s))) = true .
 	eq (r4 \in cnonce(nw(s))) = true .
-    eq (p = intruder) = true .
+    eq p = intruder .
     eq r \in ur(s) = false .
   	red inv220(s,p,q,r,n) implies inv220(fkm22(s,r1,r2,r3,r4),p,q,r,n) .
 close
