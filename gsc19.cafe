@@ -157,6 +157,7 @@ open INV .
 
 	:apply (rd)
 
+-- sdm2
 	:apply(tc)
 
 	:def csb14 = :ctf [M#Msg \in nw(S#Sys) .]
@@ -188,8 +189,6 @@ open INV .
 	:apply(csb20)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:def csb21 = :ctf {eq P@Prin  = intruder .}
@@ -197,8 +196,6 @@ open INV .
 	:apply(csb21)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:def csb22 = :ctf {eq R@Rand  = R#Rand .}
@@ -206,8 +203,6 @@ open INV .
 	:apply(csb22)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
@@ -229,8 +224,6 @@ open INV .
 	:apply(csb24)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:def csb25 = :ctf {eq P0@Prin  = P#Prin .}
@@ -246,8 +239,6 @@ open INV .
 	:apply(csb27)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:def csb28 = :ctf {eq sender(M#Msg) = P@Prin .}
@@ -283,8 +274,6 @@ open INV .
 	:apply(csb31)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:def csb32 = :ctf {eq sender(M#Msg) = P@Prin .}
@@ -320,8 +309,6 @@ open INV .
 	:apply(csb35)
 
 	*** The corresponding proof score was not present.
-    	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
-
 	:apply (rd)
 
 	:imp [inv19] by {N:Nonce <- N@Nonce ; P0:Prin <- P0@Prin ; P:Prin <- P@Prin ; R:Rand <- R@Rand ;}
