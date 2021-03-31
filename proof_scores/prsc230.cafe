@@ -1,7 +1,7 @@
 --> I) Base case
 --> init
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -11,7 +11,7 @@ close
 --> II) Induction cases
 --> 1. fkm11(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -24,7 +24,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -38,7 +38,7 @@ close
 
 --> 2. fkm12(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -51,7 +51,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -65,7 +65,7 @@ close
 
 --> 3. fkm21(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -78,7 +78,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -92,7 +92,7 @@ close
 
 --> 4. fkm22(s,r1,r2,r3,r4)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -107,7 +107,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -122,7 +122,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -137,7 +137,7 @@ close
 
 --> 5. fkm31(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -152,7 +152,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -167,7 +167,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -181,7 +181,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -195,7 +195,7 @@ close
 
 --> 6. fkm32(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
     op p : -> Prin .
     op q : -> Prin .
     op r : -> Rand .
@@ -211,7 +211,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
     op p : -> Prin .
     op q : -> Prin .
     op r : -> Rand .
@@ -228,7 +228,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
     op p : -> Prin .
     op q : -> Prin .
     op r : -> Rand .
@@ -245,7 +245,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -260,7 +260,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -274,7 +274,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -288,7 +288,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -303,7 +303,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -320,7 +320,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -338,7 +338,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -357,7 +357,7 @@ close
 
 --> 7. sdm1(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -370,7 +370,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -384,7 +384,7 @@ close
 
 --> 8. sdm2(s,r1,r2,r3)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -402,7 +402,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -420,7 +420,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -437,7 +437,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -453,7 +453,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -468,7 +468,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -482,7 +482,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -496,7 +496,7 @@ close
 
 --> 9. sdm3(s,r1,r2,r3,r4)
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -528,7 +528,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -561,7 +561,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -595,7 +595,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -631,7 +631,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -668,7 +668,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -710,7 +710,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -753,7 +753,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -783,7 +783,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -812,7 +812,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -840,7 +840,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -869,7 +869,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -898,7 +898,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -926,7 +926,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -951,7 +951,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -975,7 +975,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -998,7 +998,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1020,7 +1020,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1041,7 +1041,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1061,7 +1061,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1080,7 +1080,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1098,7 +1098,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1115,7 +1115,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1131,7 +1131,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1146,7 +1146,7 @@ open INV .
 close
 
 open INV .
-  :id(inv23)
+  
   op p : -> Prin .
   op q : -> Prin .
   op r : -> Rand .
@@ -1159,6 +1159,3 @@ open INV .
   red inv230(s,p,q,r) implies inv230(sdm3(s,r1,r2,r3,r4),p,q,r) .
 close
 
-open INV .
-  :proof(inv23)
-close
